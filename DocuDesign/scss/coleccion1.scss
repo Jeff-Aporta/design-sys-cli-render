@@ -1,0 +1,86 @@
+@use "./fx" as *;
+@use "./colors" as *;
+
+.content-container {
+  padding: 15px;
+}
+.content-container-2 {
+  padding: 30px;
+}
+
+.of-contain {
+  object-fit: contain;
+}
+
+.oc-lt {
+  object-position: left top;
+}
+
+.tw-balance {
+  text-wrap: balance;
+}
+
+.d-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.d-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.d-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.d-flex-col-center {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.to-right-center {
+  transform-origin: 100% center;
+}
+
+.ws-nowrap {
+  white-space: nowrap;
+}
+
+.tt-uppercase {
+  text-transform: uppercase;
+}
+
+.h-full {
+  min-height: 100vh;
+}
+
+.square {
+  aspect-ratio: 1;
+}
+
+.circle {
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.fw-bolder {
+  font-weight: bolder;
+}
+
+.every-bg-transparent {
+  &,
+  * {
+    background: transparent !important;
+  }
+}

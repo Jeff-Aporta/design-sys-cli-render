@@ -1,0 +1,13 @@
+{
+  "name": "design-sys-cli-render",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "merger-client-static-jsx": "^1.1.2"
+  }
+}
