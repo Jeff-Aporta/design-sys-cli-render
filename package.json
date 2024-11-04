@@ -8,6 +8,6 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "merger-client-static-jsx": "^1.1.6"
+    "merger-client-static-jsx": "^1.1.8"
   }
 }

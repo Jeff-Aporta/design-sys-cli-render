@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DocuDesign</title>
+    <script src="https://jeff-aporta.github.io/ascii-maploader/static/js/index.all.min.js"></script>
+    <script>
+      asciiMap.CLI.react_mui_fa();
+      asciiMap.CLI.fluidCSS();
+      asciiMap.writehtml(`
+        📄 initApp.jsx
+        📄 sect1.jsx
+      `);
+      asciiMap
+        .tree("../..")
+        .subDir("comun/css", (comuncss) => {
+          comuncss.css("fluids", "main-sass", "PR");
+        })
+        .subDir("comun/jsx", (comunjsx) => {
+          comunjsx.jsx("00-mui-setup").jsx("fluids").jsx("repetitive");
+        })
+        .writehtml();
+      asciiMap
+        .tree("..")
+        .subDir("css", (static) => {
+          static.css("main.css");
+        })
+        .subDir("jsx", (jsx) => {
+          jsx.jsx(
+            "app-template",
+            "events",
+            "HeaderMenu",
+            "md",
+            "repetitive",
+            "SideleftMenu",
+            "SiderightMenu",
+            "tools"
+          );
+        })
+        .writehtml();
+    </script>
+  </head>
+  <body>
+    <div id="root">
+      cargando...
+      <script type="text/babel">
+        initApp();
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,9 +1,3 @@
-function idR(prefix = "idR") {
-  return Math.random()
-    .toString(36)
-    .replace("0.", prefix + "-");
-}
-
 function IDR(props) {
   return <_ {...props} id={idR()} />;
 }

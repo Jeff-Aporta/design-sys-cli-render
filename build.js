@@ -1,13 +1,10 @@
-import { merger, build_SASS, cssMerger } from "merger-client-static-jsx";
+import { build_SASS } from "merger-client-static-jsx";
 
-// await build_SASS({
-//   mainSASS: "./DocuDesign/scss/abrevs.scss",
-//   outCSS: "./DocuDesign/css/main-sass.css",
-// });
+import build_DocuDesign from './DocuDesign/build.js';
 
-await cssMerger({ folderCSS: "./DocuDesign/css", outfile: "./DocuDesign/static/all.styles.min.css" })
+await build_SASS({
+    mainSASS: "./comun/scss/abrevs.scss",
+    outCSS: "./comun/css/main-sass.css",
+});
 
-// merger({
-//   folderRoot: "./DocuDesign",
-//   output: "./DocuDesign/static/all.templates.min.js",
-// });
+build_DocuDesign();

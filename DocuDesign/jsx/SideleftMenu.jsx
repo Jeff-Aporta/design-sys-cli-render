@@ -78,7 +78,7 @@ function ContentLeftMenu({ idSelected, def, mapSite }) {
     );
   });
   return (
-    <div className="padb-100px" style={{ maxWidth: "350px" }}>
+    <div className="padb-100px">
       <Repositorio />
       {maps}
     </div>
@@ -93,13 +93,14 @@ function ContentLeftMenu({ idSelected, def, mapSite }) {
       );
     }
     return (
-      <div className="pad-10px">
+      <div>
         <Button
           color="black"
-          className="bright-hover-2 br-10px"
+          className="bright-hover-2"
           variant="contained"
           style={{
             border: "1px solid rgba(128, 128, 128, 0.3)",
+            borderLeft: "none",
             background: "rgba(0, 0, 0, 0.4)",
           }}
           startIcon={<i className="fa-brands fa-github" />}

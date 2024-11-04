@@ -81,6 +81,9 @@ function SiderightMenuResponsive() {
 
 function updateTopRight() {
   const parent = document.querySelector(".root");
+  if (!parent) {
+    return;
+  }
   const scrollparent = parent.scrollTop;
   const elementosIndexados = [...document.querySelectorAll(".indexed")].filter(
     (e) => !e.classList.contains("root")
