@@ -2,7 +2,7 @@ function ActivadorMenuIzquierda() {
   return (
     <label
       className={fluidCSS()
-        .gtX(650, { display: "none" })
+        .gtX(_sideleft_brk_, { display: "none" })
         .end("activator-menuleft c-pointer")}
       htmlFor="check-menu-responsive"
     >

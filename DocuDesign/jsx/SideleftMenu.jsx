@@ -1,3 +1,5 @@
+const _sideleft_brk_ = 900;
+
 function generateAcordionMenuleft({ element, def, idSelected, mapSite }) {
   const exp = element.childs.some((child) => child.id == idSelected);
   return (
@@ -127,7 +129,7 @@ function SideleftMenuResponsive() {
   return (
     <_
       className={fluidCSS()
-        .gtX(650, { display: "none" })
+        .gtX(_sideleft_brk_, { display: "none" })
         .end("sideleft-menu-responsive-container")}
     >
       <label
@@ -143,7 +145,7 @@ function SideleftMenuResponsive() {
       <Paper
         variant="nofill"
         className={fluidCSS()
-          .gtX(650, { display: "none" })
+          .gtX(_sideleft_brk_, { display: "none" })
           .end(`sidebar left-responsive padh-10px padw-10px`)}
         style={{
           position: "absolute",
@@ -167,7 +169,7 @@ function SideleftMenu() {
     <Card
       variant="nofill"
       className={fluidCSS()
-        .ltX(650, { display: "none" })
+        .ltX(_sideleft_brk_, { display: "none" })
         .end(`sidebar left of-y-auto padh-10px`)}
       style={{ borderRight: "1px solid rgba(128, 128, 128, 0.2)" }}
     />
