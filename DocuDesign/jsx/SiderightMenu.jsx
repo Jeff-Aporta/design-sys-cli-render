@@ -6,11 +6,13 @@ const style_right_menu_item = {
   width: "200px",
 };
 
+const _sideright_brk_ = 1100;
+
 function SiderightMenuResponsive() {
   return (
     <_
       className={fluidCSS()
-        .gtX(950, { display: "none" })
+        .gtX(_sideright_brk_, { display: "none" })
         .end("container-right-responsive togle-input")}
     >
       <input
@@ -117,7 +119,7 @@ function SiderightMenu() {
     <Card
       variant="nofill"
       className={fluidCSS()
-        .ltX(950, { display: "none" })
+        .ltX(_sideright_brk_, { display: "none" })
         .end("sidebar right pad-10px")}
     />
   );

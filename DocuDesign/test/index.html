@@ -7,7 +7,7 @@
     <script src="https://jeff-aporta.github.io/ascii-maploader/static/js/index.all.min.js"></script>
 
     <script>
-      const test = false;
+      const test = true;
 
       asciiMap.CLI.react_mui_fa();
       asciiMap.CLI.fluidCSS();
@@ -22,7 +22,7 @@
             comuncss.css("fluids", "main-sass", "PR");
           })
           .subDir("comun/jsx", (comunjsx) => {
-            comunjsx.jsx("00-mui-setup").jsx("fluids").jsx("repetitive");
+            comunjsx.jsx("00-mui-setup").jsx("01-fluids").jsx("01-repetitive");
           })
           .writehtml();
         asciiMap
