@@ -33,14 +33,9 @@ function $PR(props) {
 }
 
 function $Card(props) {
-  const { children } = props;
-  const p = { ...props };
-  delete p.children;
   return (
     <$Copy>
-      <Card {...p} className={`${props.className ?? ""} pad-10px`}>
-        <$F>{children}</$F>
-      </Card>
+      <Card {...props} className={`${props.className ?? ""} pad-10px`}/>
     </$Copy>
   );
 }
