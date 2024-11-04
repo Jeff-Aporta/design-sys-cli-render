@@ -36,7 +36,11 @@ function $F({ children, className = "" }) {
 
     return lines.map((line) => {
       const r = titles(line);
-      return <p>{r}</p>;
+      if (typeof r == "string") {
+        return <p>{r}</p>;
+      }
+      return r;
+
 
       function titles(text) {
         if (typeof text != "string") {
