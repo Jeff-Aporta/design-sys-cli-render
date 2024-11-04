@@ -187,7 +187,7 @@ function $F({ children, className = "" }) {
           return parts[0];
         }
         return (
-          <_>
+          <p>
             {parts.map((part) => {
               if (part.startsWith("```") && part.endsWith("```")) {
                 let content = part.slice(3, -3);
@@ -217,7 +217,7 @@ function $F({ children, className = "" }) {
               }
               return everywhere(part);
             })}
-          </_>
+          </p>
         );
       }
 
