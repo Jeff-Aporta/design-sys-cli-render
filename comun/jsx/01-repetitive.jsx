@@ -41,8 +41,13 @@ function $CardCopy(props) {
 }
 
 function $CardF(props) {
-  props.children = <$F>{props.children}</$F>;
-  return <Card {...props} className={`${props.className ?? ""} pad-10px`} />;
+  return (
+    <Card
+      {...props}
+      className={`${props.className ?? ""} pad-10px`}
+      children={<$F>{props.children}</$F>}
+    />
+  );
 }
 
 function $$h() {
