@@ -2,12 +2,12 @@ import { merger, build_SASS, copiar_archivos_a_otra_carpeta, cssMerger } from "m
 
 import fs from "fs";
 
-import { crear_carpeta_temp } from "../tools.js";
+import { crear_carpeta } from "../tools.js";
 
 export default async () => {
     const temp = fs.mkdtempSync("./temp")
-    crear_carpeta_temp(`./${temp}/css`)
-    crear_carpeta_temp(`./${temp}/jsx`)
+    crear_carpeta(`./${temp}/css`)
+    crear_carpeta(`./${temp}/jsx`)
 
     copiar_archivos_a_otra_carpeta({
         folderInput: "./DocuDesign/css",

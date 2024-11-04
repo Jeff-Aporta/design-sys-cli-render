@@ -7,6 +7,9 @@ function _sect1() {
       <$h />
       ###### Pensado para documentaciones
       <$$h />
+      <$index>
+        <h1>Hola</h1>
+      </$index>
       Framework de diseño y desarrollo para documentaciones web. crea documentos
       profesionales y fácilmente mantenibles.
       <$$h />
