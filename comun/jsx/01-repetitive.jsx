@@ -24,20 +24,25 @@ function $PR(props) {
   delete p.children;
   delete p.lang;
   return (
-    <$Card {...p}>
+    <$CardCopy {...p}>
       <pre className="prettyprint">
         <code className={`lang-${lang}`}>{children}</code>
       </pre>
-    </$Card>
+    </$CardCopy>
   );
 }
 
-function $Card(props) {
+function $CardCopy(props) {
   return (
     <$Copy>
-      <Card {...props} className={`${props.className ?? ""} pad-10px`}/>
+      <Card {...props} className={`${props.className ?? ""} pad-10px`} />
     </$Copy>
   );
+}
+
+function $CardF(props) {
+  props.children = <$F>{props.children}</$F>;
+  return <Card {...props} className={`${props.className ?? ""} pad-10px`} />;
 }
 
 function $$h() {
