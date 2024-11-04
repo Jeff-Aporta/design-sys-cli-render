@@ -35,7 +35,8 @@ function $F({ children, className = "" }) {
     const lines = children.split("\n");
 
     return lines.map((line) => {
-      return titles(line);
+      const r = titles(line);
+      return <p>{r}</p>;
 
       function titles(text) {
         if (typeof text != "string") {

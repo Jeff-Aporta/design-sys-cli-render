@@ -33,14 +33,19 @@ function $PR(props) {
 }
 
 function $Card(props) {
+  const { children } = props;
+  const p = { ...props };
+  delete p.children;
   return (
     <$Copy>
-      <Card {...props} className={`${props.className ?? ""} pad-10px`} />
+      <Card {...p} className={`${props.className ?? ""} pad-10px`}>
+        <$F>{children}</$F>
+      </Card>
     </$Copy>
   );
 }
 
-function $$h({ l = 1 }) {
+function $$h() {
   return <$h l={2} />;
 }
 
@@ -66,11 +71,9 @@ function $Copy(props) {
           size="small"
           onClick={() => {
             const text = document.getElementById(id).innerText;
-            navigator.clipboard
-              .writeText(text)
-              .catch((err) => {
-                console.error("Failed to copy: ", err);
-              });
+            navigator.clipboard.writeText(text).catch((err) => {
+              console.error("Failed to copy: ", err);
+            });
           }}
         >
           <i className="fa fa-copy" />
