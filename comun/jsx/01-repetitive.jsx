@@ -1,3 +1,17 @@
+function $CardDef(props) {
+  const { title, children } = props;
+  delete props.title;
+  delete props.children;
+  return (
+    <Card {...props} className="mh-20px pad-10px">
+      <$enfasis>{title}</$enfasis>
+      <br />
+      <$h />
+      <$F>{children}</$F>
+    </Card>
+  );
+}
+
 function idR(prefix = "idR") {
   return Math.random()
     .toString(36)
