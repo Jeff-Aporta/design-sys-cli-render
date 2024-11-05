@@ -66,7 +66,12 @@ function ContentLeftMenu({ idSelected, def, mapSite }) {
       <div className="mh-10px">
         <Button_SideLeft
           size="small"
-          onClick={() => changeContent({ id: element.id, def, mapSite })}
+          onClick={() => {
+            document.getElementById("check-menu-responsive").checked = true;
+            document.querySelector(".sidebar.left-responsive").scrollTop = 0;
+            document.querySelector(".sidebar.left").scrollTop = 0;
+            changeContent({ id: element.id, def, mapSite });
+          }}
           startIcon={
             <div className="d-center" style={{ width: "40px", scale: "0.8" }}>
               <i className={element.i} />
@@ -172,7 +177,10 @@ function SideleftMenu() {
       className={fluidCSS()
         .ltX(_sideleft_brk_, { display: "none" })
         .end(`sidebar left of-y-auto padh-10px`)}
-      style={{ borderRight: "1px solid rgba(128, 128, 128, 0.2)" }}
+      style={{
+        borderRight: "1px solid rgba(128, 128, 128, 0.2)",
+        overflowY: "auto",
+      }}
     />
   );
 }
