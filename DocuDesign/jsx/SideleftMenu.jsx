@@ -136,6 +136,7 @@ function SideleftMenuResponsive() {
       className={fluidCSS()
         .gtX(_sideleft_brk_, { display: "none" })
         .end("sideleft-menu-responsive-container")}
+      style={{ zIndex: "1" }}
     >
       <label
         htmlFor="check-menu-responsive"

@@ -22,7 +22,7 @@ function App() {
       <div className="app-content">
         <SideleftMenuResponsive />
         <SideleftMenu />
-        <_ className="main-area"></_>
+        <_ className="main-area" style={{ zIndex: "0" }}></_>
         <SiderightMenu />
         <SiderightMenuResponsive />
       </div>
