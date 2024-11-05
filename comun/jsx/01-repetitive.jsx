@@ -6,7 +6,6 @@ function $CardDef(props) {
     <Card {...props} className="mh-20px pad-10px">
       <$enfasis>{title}</$enfasis>
       <br />
-      <$h />
       <$F>{children}</$F>
     </Card>
   );
