@@ -1,15 +1,18 @@
-
 function $CardDef(props) {
   let { title, children } = props;
   delete props.title;
   delete props.children;
   if (typeof title == "string") {
-    title = <$enfasis>{title}</$enfasis>;
+    title = (
+      <_>
+        <$enfasis>{title}</$enfasis>
+        <br />
+      </_>
+    );
   }
   return (
     <Card {...props} className="mh-20px pad-10px">
       {title}
-      <br />
       <$F>{children}</$F>
     </Card>
   );
