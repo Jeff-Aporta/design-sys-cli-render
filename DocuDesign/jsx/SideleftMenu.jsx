@@ -145,6 +145,7 @@ function SideleftMenuResponsive() {
           height: "100%",
           width: "100%",
           backdropFilter: "brightness(0.5) blur(3px)",
+          zIndex: "9",
         }}
         className="backdrop-responsive"
       />
@@ -157,7 +158,7 @@ function SideleftMenuResponsive() {
           position: "absolute",
           overflowY: "auto",
           height: "100%",
-          zIndex: 10,
+          zIndex: "10",
         }}
       >
         <input
