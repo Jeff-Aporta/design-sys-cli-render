@@ -1,7 +1,7 @@
 const themename = (() => {
   const ls = localStorage.getItem("theme");
   const w = window["theme-config-name"];
-  return ls ?? w ?? "dark";
+  return w ?? ls ?? "dark";
 })();
 
 const isThemeDark = themename === "dark";

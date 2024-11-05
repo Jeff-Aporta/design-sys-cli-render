@@ -68,7 +68,7 @@ function ContentLeftMenu({ idSelected, def, mapSite }) {
           size="small"
           onClick={() => changeContent({ id: element.id, def, mapSite })}
           startIcon={
-            <div className="d-center" style={{ width: "40px" }}>
+            <div className="d-center" style={{ width: "40px", scale: "0.8" }}>
               <i className={element.i} />
             </div>
           }
@@ -181,12 +181,17 @@ function Button_SideLeft(props) {
     <Button
       color="white"
       fullWidth
-      startIcon={<i className="fa-solid fa-caret-right c-gray" />}
+      startIcon={
+        <i
+          className="fa-solid fa-caret-right c-gray"
+          style={{ scale: "0.6" }}
+        />
+      }
       sx={{
         display: "flex",
         justifyContent: "flex-start",
+        padding: "5px",
         paddingLeft: "25px",
-        borderBottom: "1px solid rgba(128,128,128,0.3)",
       }}
       {...props}
     />
@@ -202,10 +207,12 @@ function Acord_SideLeft(props) {
         defaultExpanded={props.defaultExpanded}
       >
         <AccordionSummary expandIcon={<i className="fa-solid fa-caret-down" />}>
-          <Typography className="padr-10px">{title}</Typography>
+          <Typography className="padr-10px">
+            <strong>{title}</strong>
+          </Typography>
         </AccordionSummary>
         <AccordionDetails sx={{ paddingBottom: "10px" }}>
-          <Typography>{children}</Typography>
+          {children}
         </AccordionDetails>
       </Accordion>
     </div>

@@ -32,7 +32,7 @@ function $variatStr(variant, props) {
     case "hr":
       return fluidCSS()
         .ltX(500, { display: "none" })
-        .end(props.className ?? "op-30");
+        .end(props.className ?? "op-20");
     case "br":
       return fluidCSS().ltX(500, { display: "none" }).end(className);
   }
@@ -61,7 +61,7 @@ function $variatStr(variant, props) {
           fontSize: [fs, sz],
         })
         .ltX(600, { fontWeight: "bolder" })
-        .end(className);
+        .end(className + " c-white");
     }
     return "";
   })();

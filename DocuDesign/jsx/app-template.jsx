@@ -1,3 +1,5 @@
+window["theme-config-name"] = "dark";
+
 const config_template = {
   clases: {
     text: fluidCSS()
