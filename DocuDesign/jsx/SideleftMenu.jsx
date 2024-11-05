@@ -149,6 +149,7 @@ function SideleftMenuResponsive() {
           .end(`sidebar left-responsive padh-10px padw-10px`)}
         style={{
           position: "absolute",
+          overflowY: "auto",
           height: "100%",
           zIndex: 10,
         }}
