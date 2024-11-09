@@ -16,6 +16,35 @@ function $$br(props) {
   );
 }
 
+function $h1(props) {
+  return <$ {...props} variant="h1" />;
+}
+
+function $h2(props) {
+  return <$ {...props} variant="h2" />;
+}
+function $h3(props) {
+  return <$ {...props} variant="h3" />;
+}
+function $h4(props) {
+  return <$ {...props} variant="h4" />;
+}
+function $h5(props) {
+  return <$ {...props} variant="h5" />;
+}
+function $h6(props) {
+  return <$ {...props} variant="h6" />;
+}
+function $h7(props) {
+  return <$ {...props} variant="h7" />;
+}
+function $h8(props) {
+  return <$ {...props} variant="h8" />;
+}
+function $h9(props) {
+  return <$ {...props} variant="h9" />;
+}
+
 function $(props) {
   return (
     <_
