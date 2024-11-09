@@ -50,7 +50,7 @@ function App() {
   });
   window.addEventListener("mousemove", (event) => {
     console.log(event.pointerType);
-    if (isTouchDevice) {
+    if (!isTouchDevice) {
       document
         .querySelectorAll(".cursor-effect")
         .forEach(
@@ -61,15 +61,15 @@ function App() {
     }
   });
   window.addEventListener("mousedown", (event) => {
-    if (isTouchDevice) {
+    if (!isTouchDevice) {
       document
         .querySelectorAll(".cursor-effect")
         .forEach((e) => (e.style.opacity = "0"));
     }
   });
-  
+
   window.addEventListener("mouseup", (event) => {
-    if (isTouchDevice) {
+    if (!isTouchDevice) {
       document
         .querySelectorAll(".cursor-effect")
         .forEach((e) => (e.style.opacity = e.dataset.opacity));
