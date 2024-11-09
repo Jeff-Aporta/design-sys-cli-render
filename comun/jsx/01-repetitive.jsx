@@ -6,10 +6,10 @@ function idR(prefix = "idR") {
 
 function $code(props) {
   const { children } = props;
-  const p = {...props };
+  const p = { ...props };
   delete p.children;
   return (
-    <$CardCopy {...p}>
+    <$CardCopy {...p} style={{ overflow: "auto", ...(p.style ?? {}) }}>
       <pre>
         <code>{children}</code>
       </pre>
