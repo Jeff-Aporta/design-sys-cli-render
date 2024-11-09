@@ -4,6 +4,16 @@ function idR(prefix = "idR") {
     .replace("0.", prefix + "-");
 }
 
+function $code() {
+  return (
+    <$CardCopy {...p}>
+      <pre>
+        <code>{children}</code>
+      </pre>
+    </$CardCopy>
+  );
+}
+
 function $PR(props) {
   const { children, lang } = props;
   const p = { ...props };
