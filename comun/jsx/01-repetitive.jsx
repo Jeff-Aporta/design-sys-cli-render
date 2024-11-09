@@ -5,8 +5,11 @@ function idR(prefix = "idR") {
 }
 
 function $code(props) {
+  const { children } = props;
+  const p = {...props };
+  delete p.children;
   return (
-    <$CardCopy {...props}>
+    <$CardCopy {...p}>
       <pre>
         <code>{children}</code>
       </pre>
