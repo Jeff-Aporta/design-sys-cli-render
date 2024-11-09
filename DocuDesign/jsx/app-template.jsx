@@ -48,7 +48,6 @@ function App() {
     isTouchDevice = true;
   });
   window.addEventListener("mousemove", (event) => {
-    console.log(event.pointerType);
     if (!isTouchDevice) {
       document
         .querySelectorAll(".cursor-effect")
