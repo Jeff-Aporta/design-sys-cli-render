@@ -53,19 +53,7 @@ function initApp() {
         lbl: " ",
       },
       {
-        component: () => (
-          <center>
-            <Button
-              color="darkprimary"
-              variant="contained"
-              startIcon={<i className="fa fa-globe" />}
-              target="_blank"
-              href="https://jeff-aporta.github.io/portafolio/"
-            >
-              Más en mi portafolio
-            </Button>
-          </center>
-        ),
+        component: () => <_masEnMiPortafolio/>
       },
       {
         lbl: " - ",

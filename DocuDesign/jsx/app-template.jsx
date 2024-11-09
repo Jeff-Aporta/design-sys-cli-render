@@ -42,10 +42,31 @@ function App() {
     event.preventDefault();
     window.scrollTo(0, 0);
   });
+  window.addEventListener("mousemove", (event) => {
+    document
+      .querySelectorAll(".cursor-effect")
+      .forEach(
+        (e) =>
+          (e.style.left = event.clientX + "px") &
+          (e.style.top = event.clientY + "px")
+      );
+  });
+  window.addEventListener("mousedown", (event) => {
+    document
+      .querySelectorAll(".cursor-effect")
+      .forEach((e) => (e.style.opacity = "0"));
+  });
+  window.addEventListener("mouseup", (event) => {
+    document
+      .querySelectorAll(".cursor-effect")
+      .forEach((e) => (e.style.opacity = e.dataset.opacity));
+  });
 
   return (
     <Main>
       <HeaderMenu />
+      <CursorEffect mix="soft-light" opacity="0.3" zIndex="0" />
+      <CursorEffect mix="soft-light" opacity="0.1" zIndex="10" />
       <div className="app-content">
         <SideleftMenuResponsive />
         <SideleftMenu />
@@ -55,6 +76,30 @@ function App() {
       </div>
     </Main>
   );
+
+  function CursorEffect({mix, opacity, zIndex=0}) {
+    return (
+      <div
+        className="cursor-effect"
+        data-opacity={opacity}
+        style={{
+          width: "min(100vw, 100vh)",
+          height: "min(100vw, 100vh)",
+          position: "absolute",
+          transform: "translateX(-50%) translateY(-50%)",
+          transition: "opacity 0.2s",
+          pointerEvents: "none",
+          left: "9999px",
+          top: "9999px",
+          mixBlendMode: mix,
+          zIndex,
+          opacity,
+          background:
+            "radial-gradient(circle at center, cyan 0%, transparent 70%)",
+        }}
+      />
+    );
+  }
 
   function Main({ children }) {
     return (

@@ -78,7 +78,6 @@ function _$Bienvenido({ name_app, children, img_url }) {
   );
 }
 
-
 function _$Instalación({ url_cdn, npm_pack }) {
   return (
     <$index label="Instalación">
@@ -141,3 +140,21 @@ function _$Instalación({ url_cdn, npm_pack }) {
   }
 }
 
+function _masEnMiPortafolio({
+  url = "https://jeff-aporta.github.io/portafolio",
+}) {
+  return (
+    <center>
+      <Button
+        color="darkprimary"
+        variant="contained"
+        className="bright-hover-1-5"
+        startIcon={<i className="fa fa-globe" />}
+        target="_blank"
+        href={url}
+      >
+        Más en mi portafolio
+      </Button>
+    </center>
+  );
+}

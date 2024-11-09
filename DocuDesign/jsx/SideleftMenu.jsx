@@ -180,6 +180,7 @@ function SideleftMenu() {
         .ltX(_sideleft_brk_, { display: "none" })
         .end(`sidebar left of-y-auto padh-10px`)}
       style={{
+        background: "rgba(0, 0, 0, 0.2)",
         borderRight: "1px solid rgba(128, 128, 128, 0.2)",
         overflowY: "auto",
       }}
