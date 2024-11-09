@@ -6,6 +6,33 @@ const config_template = {
       .lerpX([850, 1200], { fontSize: [13, 16] })
       .end(),
   },
+  banner: {
+    left: {
+      label: "Documentación",
+      logo: "static/img/icon.svg",
+    },
+    right: {
+      social: {
+        github: {
+          label: "Jeff-Aporta",
+          url: "https://github.com/Jeff-Aporta",
+        },
+        youtube: {
+          label: "YouTube",
+          url: "https://www.youtube.com/@JeffAporta",
+        },
+        whatsapp: {
+          label: "WhatsApp",
+          url: "https://wa.link/1tmqmt",
+        },
+        telegram: {
+          label: "Telegram",
+          url: "https://t.me/jeffAporta",
+        },
+      },
+    },
+  },
+  default_id: "intro",
 };
 
 const sections = {};
