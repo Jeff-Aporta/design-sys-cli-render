@@ -1,6 +1,11 @@
 @use "./fx" as *;
 @use "./colors" as *;
 
+.no-select {
+  user-select: none;
+  pointer-events: none;
+}
+
 .content-container {
   padding: 15px;
 }

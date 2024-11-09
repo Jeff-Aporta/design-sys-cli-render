@@ -60,7 +60,7 @@ function _$Bienvenido({ name_app, children, img_url }) {
           className={fluidCSS()
             .ltX(1050, { display: "none" })
             .lerpX([1050, 1200], { width: [250, 270], height: [250, 270] })
-            .end("br-30px")}
+            .end("br-30px no-select")}
         />
         <$F>{children}</$F>
         <center>

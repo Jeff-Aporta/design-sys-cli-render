@@ -95,6 +95,8 @@ html {
 
   transition: backdrop-filter 0.5s, color 0.3s;
 
+  transform-origin: 0 center;
+
   &:hover {
     backdrop-filter: brightness(1.8);
     scale: 1.05;
@@ -103,7 +105,7 @@ html {
 
 .topest {
   color: white !important;
-  scale: 1.15;
+  scale: 1.07;
   transform-origin: 0 center;
   border-left: 1px solid skyblue;
 }

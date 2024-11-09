@@ -15,6 +15,16 @@ function _sect1() {
       profesionales y fácilmente mantenibles.
       <$$h />
       <$$h />
+      <_$Bienvenido name_app="Fluid CSS" img_url="https://jeff-aporta.github.io/fluid-css/static/img/app.svg">
+        Sistema avanzado de manejo y manipulación de estilos CSS dinámicos,
+        basado en comandos personalizados.
+        <p>
+          Diseñado para ajustar y personalizar estilos en función de condiciones
+          específicas, Fluid CSS permite definir reglas CSS que responden a
+          parámetros como el tamaño de la pantalla, mediante comandos de estilo
+          encapsulados.
+        </p>
+      </_$Bienvenido>
       <Button variant="contained" href="../../">
         Ir a la raíz.
       </Button>
