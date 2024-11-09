@@ -4,9 +4,9 @@ function idR(prefix = "idR") {
     .replace("0.", prefix + "-");
 }
 
-function $code() {
+function $code(props) {
   return (
-    <$CardCopy {...p}>
+    <$CardCopy {...props}>
       <pre>
         <code>{children}</code>
       </pre>
