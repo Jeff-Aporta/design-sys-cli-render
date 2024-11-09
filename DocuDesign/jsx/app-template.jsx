@@ -46,7 +46,6 @@ function App() {
   });
   window.addEventListener("touchstart", () => {
     isTouchDevice = true;
-    console.log("El dispositivo tiene pantalla táctil.");
   });
   window.addEventListener("mousemove", (event) => {
     console.log(event.pointerType);
