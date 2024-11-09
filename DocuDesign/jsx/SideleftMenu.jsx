@@ -165,7 +165,7 @@ function SideleftMenuResponsive() {
           type="checkbox"
           defaultChecked={true}
           id="check-menu-responsive"
-          className="d-none no-select"
+          className="d-none"
         />
         <div className="content" />
       </Paper>

@@ -22,7 +22,7 @@ function HeaderMenu() {
   return (
     <Paper
       elevation={2}
-      className="header d-flex jc-sb pad-10px bb-1px-gray no-select"
+      className="header d-flex jc-sb pad-10px bb-1px-gray no-text-select"
     >
       <div className="header_logo d-center gap-20px">
         <ActivadorMenuIzquierda />

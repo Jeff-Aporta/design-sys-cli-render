@@ -37,29 +37,43 @@ const config_template = {
 
 const sections = {};
 
+let isTouchDevice = false;
+
 function App() {
   window.addEventListener("scroll", (event) => {
     event.preventDefault();
     window.scrollTo(0, 0);
   });
+  window.addEventListener("touchstart", () => {
+    isTouchDevice = true;
+    console.log("El dispositivo tiene pantalla táctil.");
+  });
   window.addEventListener("mousemove", (event) => {
-    document
-      .querySelectorAll(".cursor-effect")
-      .forEach(
-        (e) =>
-          (e.style.left = event.clientX + "px") &
-          (e.style.top = event.clientY + "px")
-      );
+    console.log(event.pointerType);
+    if (isTouchDevice) {
+      document
+        .querySelectorAll(".cursor-effect")
+        .forEach(
+          (e) =>
+            (e.style.left = event.clientX + "px") &
+            (e.style.top = event.clientY + "px")
+        );
+    }
   });
   window.addEventListener("mousedown", (event) => {
-    document
-      .querySelectorAll(".cursor-effect")
-      .forEach((e) => (e.style.opacity = "0"));
+    if (isTouchDevice) {
+      document
+        .querySelectorAll(".cursor-effect")
+        .forEach((e) => (e.style.opacity = "0"));
+    }
   });
+  
   window.addEventListener("mouseup", (event) => {
-    document
-      .querySelectorAll(".cursor-effect")
-      .forEach((e) => (e.style.opacity = e.dataset.opacity));
+    if (isTouchDevice) {
+      document
+        .querySelectorAll(".cursor-effect")
+        .forEach((e) => (e.style.opacity = e.dataset.opacity));
+    }
   });
 
   return (
@@ -77,10 +91,10 @@ function App() {
     </Main>
   );
 
-  function CursorEffect({mix, opacity, zIndex=0}) {
+  function CursorEffect({ mix, opacity, zIndex = 0 }) {
     return (
       <div
-        className="cursor-effect"
+        className="cursor-effect no-select"
         data-opacity={opacity}
         style={{
           width: "min(100vw, 100vh)",
@@ -88,7 +102,6 @@ function App() {
           position: "absolute",
           transform: "translateX(-50%) translateY(-50%)",
           transition: "opacity 0.2s",
-          pointerEvents: "none",
           left: "9999px",
           top: "9999px",
           mixBlendMode: mix,

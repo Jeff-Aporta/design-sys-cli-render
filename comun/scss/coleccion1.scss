@@ -6,6 +6,10 @@
   pointer-events: none;
 }
 
+.no-text-select{
+  user-select: none;
+}
+
 .content-container {
   padding: 15px;
 }

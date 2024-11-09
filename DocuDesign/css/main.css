@@ -118,10 +118,6 @@ html {
   cursor: pointer;
 }
 
-.no-select {
-  user-select: none;
-}
-
 .app {
   position: fixed;
   top: 0;
