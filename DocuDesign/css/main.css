@@ -7,7 +7,7 @@ html {
   color: red;
 }
 
-.of-y-auto{
+.of-y-auto {
   overflow-y: auto !important;
 }
 
@@ -36,17 +36,17 @@ html {
   }
 }
 
-.nowrap{
+.nowrap {
   white-space: nowrap;
 }
 
-.ellipsis{
+.ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.selected-sect{
+.selected-sect {
   color: skyblue !important;
   font-weight: bolder !important;
   border-left: 2px solid deepskyblue !important;
@@ -83,8 +83,12 @@ html {
   }
   --s: 2px;
   --s-: -2px;
+  --s1: 1px;
+  --s1-: -1px;
   text-shadow: var(--s-) var(--s-) 0 var(--c), var(--s) var(--s-) 0 var(--c),
-    var(--s-) var(--s) 0 var(--c), var(--s) var(--s) 0 var(--c);
+    var(--s-) var(--s) 0 var(--c), var(--s) var(--s) 0 var(--c),
+    var(--s1-) var(--s1-) 0 var(--c), var(--s1) var(--s1-) 0 var(--c),
+    var(--s1-) var(--s1) 0 var(--c), var(--s1) var(--s1) 0 var(--c);
 }
 
 .link-index {
@@ -197,10 +201,10 @@ html {
       }
     }
     .sidebar {
-      &.left{
+      &.left {
         max-width: 250px;
       }
-      &.right-responsive{
+      &.right-responsive {
         min-width: 300px;
         font-size: 110%;
       }
