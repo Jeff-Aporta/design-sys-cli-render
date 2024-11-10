@@ -93,6 +93,7 @@ function updateTopRight() {
   document
     .querySelectorAll(".topest")
     .forEach((e) => e.classList.remove("topest"));
+
   const calcT = (e) => {
     const top = e.offsetTop;
     return top - scrollparent;
@@ -129,7 +130,7 @@ function buscar_idR(query, tree = {}) {
   [...document.querySelectorAll(query)].forEach((e) => {
     if (e.id.startsWith("idR-")) {
       tree[e.id] ??= {};
-      const query_idR = `#${e.id} > *`;
+      const query_idR = `#${e.id} *`;
       buscar_idR(query_idR, tree[e.id]);
     }
   });
@@ -140,7 +141,7 @@ function onHash(id) {
   const parent = document.querySelector(".root");
   const topparent = parent.getBoundingClientRect().top;
   parent.scrollTo({
-    top: document.getElementById(id).offsetTop - topparent - 50,
+    top: document.getElementById(id).offsetTop - topparent - 10,
     behavior: "smooth",
   });
 }

@@ -14,6 +14,7 @@ function $FMD(props) {
       <CssBaseline />
       <_
         {...p}
+        onScroll={updateTopRight}
         className={`root indexed tw-balance ${!F ? "padb-100px" : ""} ${
           props.className ?? ""
         }`}
@@ -30,10 +31,7 @@ function $F({ children, className = "" }) {
 
   if (Array.isArray(children)) {
     return (
-      <_
-        className={className + " " + config_template.clases.text}
-        onScroll={updateTopRight}
-      >
+      <_ className={className + " " + config_template.clases.text}>
         {children.map((child) => {
           if (typeof child === "string") {
             return <$F>{child}</$F>;
@@ -64,8 +62,8 @@ function $F({ children, className = "" }) {
           if (text.startsWith(hashs)) {
             text = text.replace(hashs, "");
             return (
-              <$index>
-                <$ variant={`h${deep}`}>{text.trim()}</$>
+              <$index variant={`h${deep}`} label={text.trim()}>
+                {text.trim()}
               </$index>
             );
           }
