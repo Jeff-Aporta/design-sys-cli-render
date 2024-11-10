@@ -53,7 +53,7 @@ function initApp() {
         lbl: " ",
       },
       {
-        component: () => <_masEnMiPortafolio/>
+        component: () => <_masEnMiPortafolio />,
       },
       {
         lbl: " - ",

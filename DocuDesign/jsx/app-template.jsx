@@ -23,7 +23,7 @@ const config_template = {
         },
         whatsapp: {
           label: "WhatsApp",
-          url: "https://wa.link/1tmqmt",
+          url: "https://wa.link/viwd81",
         },
         telegram: {
           label: "Telegram",
@@ -33,6 +33,55 @@ const config_template = {
     },
   },
   default_id: "intro",
+  footer: () => {
+    return (
+      <Card
+        className={fluidCSS()
+          .lerpX([320, 1000], { fontSize: [18, 20] })
+          .end("d-flex flex-wrap mt-100px")}
+      >
+        <div style={{ fontSize: "60%", width: "100%" }} className="pad-10px">
+          <big>
+            <b>Jeffrey Agudelo</b>
+          </big>
+          <$h />
+          <span className="op-80">
+            Desarrollando software de alta calidad con habilidad y dedicación
+            para impulsar aplicaciones.
+          </span>
+          <$h />
+          <$hr />
+          <$$h />
+          <div className="d-flex jc-sb c-skyblue flex-wrap gap-10px">
+            <div className={fluidCSS().ltX(550, { width: "100%" }).end()}>
+              <big>
+                <b>Contacto:</b>
+              </big>
+            </div>
+            <span>jeffrey.alexander.agudelo.espitia@gmail.com</span>
+            <span>Teléfono: (+57) 3107257814</span>
+          </div>
+        </div>
+        <Brands social="Github" url="https://github.com/Jeff-Aporta" />
+        <Brands social="YouTube" url="https://www.youtube.com/@JeffAporta" />
+        <Brands social="Telegram" url="https://t.me/jeffAporta" />
+        <Brands social="WhatsApp" url="https://wa.link/viwd81" />
+      </Card>
+    );
+
+    function Brands({ social, url }) {
+      return (
+        <Link underline="none" color="inherit" href={url} className="flex-1">
+          <Card className="bright-hover-2 d-center gap-10px pad-20px op-70">
+            <big>
+              <i class={`fa-brands fa-${social.toLowerCase()}`} />
+            </big>{" "}
+            {social}
+          </Card>
+        </Link>
+      );
+    }
+  },
 };
 
 const sections = {};
@@ -77,8 +126,8 @@ function App() {
   return (
     <Main>
       <HeaderMenu />
-      <CursorEffect mix="soft-light" opacity="0.3" zIndex="0" />
-      <CursorEffect mix="soft-light" opacity="0.1" zIndex="10" />
+      <CursorEffect mix="soft-light" opacity="0.4" zIndex="0" />
+      <CursorEffect mix="soft-light" opacity="0.15" zIndex="10" />
       <div className="app-content">
         <SideleftMenuResponsive />
         <SideleftMenu />

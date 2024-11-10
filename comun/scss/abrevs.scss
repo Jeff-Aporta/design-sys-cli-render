@@ -8,6 +8,15 @@
   }
 }
 
+.d-flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
 @each $value in (row, column) {
   .flex-#{$value} {
     flex-direction: $value;
@@ -15,7 +24,8 @@
 }
 
 @each $abrev,
-  $value in (start: start, end: end, c: center, sb: space-between, se: space-evenly)
+  $value
+    in (start: start, end: end, c: center, sb: space-between, se: space-evenly)
 {
   .jc-#{$abrev} {
     justify-content: $value;
@@ -94,6 +104,9 @@
   .min-h-#{$i * 10}vh {
     min-height: #{$i * 10}vh;
   }
+  .min-w-#{$i * 50}px {
+    min-width: #{$i * 50}px;
+  }
 }
 
 @for $i from 11 through 50 {
@@ -124,15 +137,15 @@
   }
 }
 
-.overflow-scroll{
+.overflow-scroll {
   overflow-y: scroll;
 }
 
-.relative{
+.relative {
   position: relative;
 }
 
-.absolute-expand{
+.absolute-expand {
   position: absolute;
   top: 0;
   right: 0;

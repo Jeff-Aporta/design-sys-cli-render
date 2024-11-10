@@ -42,17 +42,17 @@ function $secundario({ children }) {
   return <span style={{ color: "steelblue" }}>{children}</span>;
 }
 
-function _$Bienvenido({ name_app, children, img_url }) {
+function _$Bienvenido({ name_app, children, img_url, label = "Bienvenido" }) {
   return (
     <_>
-      <$index label="Bienvenido" variant="h1" className="nowrap">
+      <$index label={label} variant="h1" className="nowrap">
         {name_app}
       </$index>
       <$$h />
       <div
         className={fluidCSS()
           .ltX(1050, { flexDirection: "column" })
-          .end("d-flex jc-sb gap-30px")}
+          .end("d-flex jc-sb gap-30px padb-50px")}
       >
         <img
           src={img_url}
@@ -68,8 +68,8 @@ function _$Bienvenido({ name_app, children, img_url }) {
             src={img_url}
             alt=""
             className={fluidCSS()
-              .btwX([500, 1050], { display: ["", "none"] })
-              .lerpX([600, 1050], { width: [250, 300], height: [250, 300] })
+              .gtX(1050, { display: "none" })
+              .lerpX([600, 1050], { width: [220, 300], height: [220, 300] })
               .end("br-30px")}
           />
         </center>

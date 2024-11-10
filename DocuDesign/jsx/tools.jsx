@@ -10,7 +10,6 @@ function loadStringsSync(url) {
   }
 }
 
-
 function IDR(props) {
   return <_ {...props} id={idR()} />;
 }

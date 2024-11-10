@@ -1,3 +1,11 @@
+@each $name,
+  $color
+    in (github: #2b3137, youtube: #ff0000, telegram: #24a1de, whatsapp: #25d366)
+{
+  .bg-#{$name} {
+    background-color: $color;
+  }
+}
 @each $color
   in (
     white,

@@ -210,7 +210,7 @@ function updateIndexes() {
           <big>{config_template.selected.lbl}</big>
         </strong>
         <hr />
-        {generateIndex(buscar_idR(".main-area .root > *"))}
+        {generateIndex(buscar_idR(".main-area .root *"))}
       </_>,
       document.querySelector(".sidebar.right" + r)
     );

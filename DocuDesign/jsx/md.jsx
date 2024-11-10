@@ -1,13 +1,26 @@
 function $FMD(props) {
+  const p = { ...props };
+  const { children } = props;
+  delete p.children;
+  const F = (() => {
+    try {
+      if (config_template.footer) {
+        return <config_template.footer />;
+      }
+    } catch (error) {}
+  })();
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <$F
-        {...props}
-        className={`content-container root indexed tw-balance padb-100px ${
+      <_
+        {...p}
+        className={`root indexed tw-balance ${!F ? "padb-100px" : ""} ${
           props.className ?? ""
         }`}
-      />
+      >
+        <$F className="padw-20px">{children}</$F>
+        {F}
+      </_>
     </ThemeProvider>
   );
 }
@@ -41,7 +54,6 @@ function $F({ children, className = "" }) {
       }
       return r;
 
-
       function titles(text) {
         if (typeof text != "string") {
           return text;
@@ -52,12 +64,9 @@ function $F({ children, className = "" }) {
           if (text.startsWith(hashs)) {
             text = text.replace(hashs, "");
             return (
-              <_
-                id={idR()}
-                class={`${$variatStr(`h${deep}`)} md titulo indexed`}
-              >
-                {text.trim()}
-              </_>
+              <$index>
+                <$ variant={`h${deep}`}>{text.trim()}</$>
+              </$index>
             );
           }
         }

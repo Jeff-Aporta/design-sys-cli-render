@@ -15,7 +15,7 @@ function _sect1() {
       profesionales y fácilmente mantenibles.
       <$$h />
       <$$h />
-      <_$Bienvenido name_app="Fluid CSS" img_url="https://jeff-aporta.github.io/fluid-css/static/img/app.svg">
+      <_$Bienvenido label="abc" name_app="Fluid CSS" img_url="https://jeff-aporta.github.io/fluid-css/static/img/app.svg">
         Sistema avanzado de manejo y manipulación de estilos CSS dinámicos,
         basado en comandos personalizados.
         <p>

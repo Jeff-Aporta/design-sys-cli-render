@@ -188,7 +188,7 @@ html {
         &.left-responsive {
           transition: left 0.3s;
           &:has(#check-menu-responsive:checked) {
-            left: -100%;
+            left: -180%;
           }
           &:has(#check-menu-responsive:not(:checked)) {
             left: 0%;
