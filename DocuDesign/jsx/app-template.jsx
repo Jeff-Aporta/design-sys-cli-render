@@ -73,7 +73,7 @@ const config_template = {
 
     function Brands({ social, url }) {
       return (
-        <Link underline="none" color="inherit" href={url} className="flex-1">
+        <Link underline="none" color="inherit" target="_blank" href={url} className="flex-1">
           <Card className="bright-hover-2 d-center gap-10px pad-20px op-70">
             <big>
               <i class={`fa-brands fa-${social.toLowerCase()}`} />
@@ -143,17 +143,12 @@ function App() {
   function CursorEffect({ mix, opacity, zIndex = 0 }) {
     return (
       <div
-        className="cursor-effect no-select"
+        className={`cursor-effect no-select minside-win p-fixed transform-centerized ${mix}`}
         data-opacity={opacity}
         style={{
-          width: "min(100vw, 100vh)",
-          height: "min(100vw, 100vh)",
-          position: "absolute",
-          transform: "translateX(-50%) translateY(-50%)",
           transition: "opacity 0.2s",
           left: "9999px",
           top: "9999px",
-          mixBlendMode: mix,
           zIndex,
           opacity,
           background:

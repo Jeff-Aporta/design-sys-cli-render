@@ -8,7 +8,7 @@
   }
 }
 
-.d-flex-column{
+.d-flex-column {
   display: flex;
   flex-direction: column;
 }
@@ -107,6 +107,11 @@
   .min-w-#{$i * 50}px {
     min-width: #{$i * 50}px;
   }
+}
+
+.minside-win {
+  width: min(100vw, 100vh);
+  height: min(100vw, 100vh);
 }
 
 @for $i from 11 through 50 {

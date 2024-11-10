@@ -6,7 +6,7 @@
   pointer-events: none;
 }
 
-.no-text-select{
+.no-text-select {
   user-select: none;
 }
 
@@ -58,6 +58,10 @@
   flex-wrap: wrap;
 }
 
+.transform-centerized {
+  transform: translateX(-50%) translateY(-50%);
+}
+
 .to-right-center {
   transform-origin: 100% center;
 }
@@ -87,9 +91,9 @@
   font-weight: bolder;
 }
 
-.every-bg-transparent {
-  &,
-  * {
-    background: transparent !important;
-  }
+.p-fixed {
+  position: fixed;
+}
+.p-absolute {
+  position: absolute;
 }
