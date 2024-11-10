@@ -62,6 +62,7 @@ const config_template = {
             <span>Teléfono: (+57) 3107257814</span>
           </div>
         </div>
+        <$$h />
         <Brands social="Github" url="https://github.com/Jeff-Aporta" />
         <Brands social="YouTube" url="https://www.youtube.com/@JeffAporta" />
         <Brands social="Telegram" url="https://t.me/jeffAporta" />
