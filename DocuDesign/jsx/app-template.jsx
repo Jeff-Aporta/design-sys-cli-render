@@ -39,6 +39,7 @@ const config_template = {
         className={fluidCSS()
           .lerpX([320, 1000], { fontSize: [18, 20] })
           .end("d-flex flex-wrap mt-100px")}
+        style={{ zIndex: 25, position: "relative" }}
       >
         <div style={{ fontSize: "60%", width: "100%" }} className="pad-10px">
           <big>
@@ -128,11 +129,11 @@ function App() {
     <Main>
       <HeaderMenu />
       <CursorEffect mix="soft-light" opacity="0.4" zIndex="0" />
-      <CursorEffect mix="soft-light" opacity="0.15" zIndex="10" />
+      <CursorEffect mix="soft-light" opacity="0.15" zIndex="30" />
       <div className="app-content">
         <SideleftMenuResponsive />
         <SideleftMenu />
-        <_ className="main-area" style={{ zIndex: "0" }}></_>
+        <_ className="main-area"></_>
         <SiderightMenu />
         <SiderightMenuResponsive />
       </div>
