@@ -8,6 +8,7 @@ function _sect1() {
       <$h />
       ###### Pensado para documentaciones
       <$$h />
+      (ej. `props = &#123; style: styleDOM, ... &#125;`).
       <$index>
         <h1>Hola</h1>
       </$index>

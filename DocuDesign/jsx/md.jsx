@@ -177,7 +177,7 @@ function $F({ children, className = "" }) {
             {parts.map((part) => {
               if (part.startsWith("`") && part.endsWith("`")) {
                 let content = part.slice(1, -1);
-                return <code>{everywhere(content)}</code>;
+                return <code className="md-code-inline">{everywhere(content)}</code>;
               }
               return everywhere(part);
             })}
