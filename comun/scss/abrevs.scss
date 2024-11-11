@@ -140,14 +140,21 @@
   .br-#{$i * 5}px {
     border-radius: #{$i * 5}px !important;
   }
+  .bottom-#{$i * 5}px {
+    bottom: #{$i * 5}px;
+  }
+  .right-#{$i * 5}px {
+    right: #{$i * 5}px;
+  }
 }
 
 .overflow-scroll {
   overflow-y: scroll;
 }
 
-.relative {
-  position: relative;
+.sz-1px{
+  width: 1px;
+  height: 1px;
 }
 
 .absolute-expand {

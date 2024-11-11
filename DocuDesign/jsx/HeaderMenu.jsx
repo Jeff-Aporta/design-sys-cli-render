@@ -5,6 +5,9 @@ function ActivadorMenuIzquierda() {
         .gtX(_sideleft_brk_, { display: "none" })
         .end("activator-menuleft c-pointer")}
       htmlFor="check-menu-responsive"
+      onClick={() => {
+        document.getElementById("togle-menu-right-responsive").checked = false;
+      }}
     >
       <big>
         <big>
@@ -23,6 +26,7 @@ function HeaderMenu() {
     <Paper
       elevation={2}
       className="header d-flex jc-sb pad-10px bb-1px-gray no-text-select"
+      style={{ zIndex: zIndexHeader }}
     >
       <div className="header_logo d-center gap-20px">
         <ActivadorMenuIzquierda />

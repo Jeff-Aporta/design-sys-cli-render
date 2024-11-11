@@ -15,7 +15,11 @@ function _sect1() {
       profesionales y fácilmente mantenibles.
       <$$h />
       <$$h />
-      <_$Bienvenido label="abc" name_app="Fluid CSS" img_url="https://jeff-aporta.github.io/fluid-css/static/img/app.svg">
+      <_$Bienvenido
+        label="abc"
+        name_app="Fluid CSS"
+        img_url="https://jeff-aporta.github.io/fluid-css/static/img/app.svg"
+      >
         Sistema avanzado de manejo y manipulación de estilos CSS dinámicos,
         basado en comandos personalizados.
         <p>
@@ -28,6 +32,10 @@ function _sect1() {
       <Button variant="contained" href="../../">
         Ir a la raíz.
       </Button>
+      <_$Instalación
+        url_cdn="https://jeff-aporta.github.io/fluid-css/static/js/index.all.min.js"
+        npm_pack="fluid-css-lng"
+      />
       <$Copy>
         <$PR lang="html" className="pad-10px mh-20px">{`
         <html>

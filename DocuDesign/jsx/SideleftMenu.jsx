@@ -136,7 +136,6 @@ function SideleftMenuResponsive() {
       className={fluidCSS()
         .gtX(_sideleft_brk_, { display: "none" })
         .end("sideleft-menu-responsive-container")}
-      style={{ zIndex: "1" }}
     >
       <label
         htmlFor="check-menu-responsive"
@@ -145,7 +144,7 @@ function SideleftMenuResponsive() {
           height: "100%",
           width: "100%",
           backdropFilter: "brightness(0.5) blur(3px)",
-          zIndex: "9",
+          zIndex: zIndexMenuLeftResponsiveBackdrop,
         }}
         className="backdrop-responsive"
       />
@@ -158,7 +157,7 @@ function SideleftMenuResponsive() {
           position: "absolute",
           overflowY: "auto",
           height: "100%",
-          zIndex: "10",
+          zIndex: zIndexMenuLeftResponsive,
         }}
       >
         <input

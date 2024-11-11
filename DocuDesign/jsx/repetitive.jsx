@@ -30,7 +30,11 @@ function $CardF(props) {
 
 function $index(props) {
   return (
-    <$ {...props} id={idR()} className={`${props.className ?? ""} indexed md`} />
+    <$
+      {...props}
+      id={idR()}
+      className={`${props.className ?? ""} indexed md`}
+    />
   );
 }
 
@@ -82,7 +86,7 @@ function _$Instalación({ url_cdn, npm_pack }) {
   return (
     <$index label="Instalación">
       <$CardF className="pad-10px">
-        # Instalación
+        <$ variant="h1">Instalación</$>
         <$hr />
         <$ variant="h4">CDN</$>
         <$h />

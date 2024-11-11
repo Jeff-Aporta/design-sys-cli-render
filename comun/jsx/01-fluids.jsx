@@ -45,17 +45,26 @@ function $h9(props) {
   return <$ {...props} variant="h9" />;
 }
 
+function _(props) {
+  if (Object.keys(props).length == 1 && props.children) {
+    return <React.Fragment {...props} />;
+  }
+  return <div {...props} />;
+}
+
 function $(props) {
   return (
     <_
       {...props}
-      className={$variatStr(props.variant) + " " + props.className}
+      className={
+        ($variatStr(props.variant) ?? "") + " " + (props.className ?? "")
+      }
     />
   );
 }
 
 function $variatStr(variant, props) {
-  const { className } = props ?? {};
+  const { className = "" } = props ?? {};
 
   switch (variant) {
     case "hr":

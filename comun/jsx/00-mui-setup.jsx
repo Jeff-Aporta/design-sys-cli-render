@@ -10,13 +10,6 @@ if (typeof window != "undefined" && window["MaterialUI"]) {
   Object.assign(window, window["MaterialUI"]);
 }
 
-function _(props) {
-  if (Object.keys(props).length == 1 && props.children) {
-    return <React.Fragment {...props} />;
-  }
-  return <div {...props} />;
-}
-
 let palette = (() => {
   const white = {
     main: "#fff",

@@ -16,13 +16,6 @@ html {
     display: none;
   }
 
-  .options {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 20;
-  }
-
   .backdrop-right-menu {
     position: fixed;
     top: 0;

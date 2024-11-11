@@ -20,14 +20,14 @@ function SiderightMenuResponsive() {
         defaultChecked={false}
         id="togle-menu-right-responsive"
       />
-      <Backdrop />
       <Contenido />
     </_>
   );
 
   function Contenido() {
     return (
-      <_ className="options">
+      <_>
+        <Backdrop />
         <EstadoEnVerdadero />
         <EstadoEnFalso />
       </_>
@@ -42,9 +42,9 @@ function SiderightMenuResponsive() {
             ).checked = false;
           }}
           elevation={6}
-          className="sidebar right-responsive pad-20px true"
+          className="sidebar right-responsive true p-fixed bottom-20px right-20px br-15px pad-20px"
           style={{
-            borderRadius: "15px",
+            zIndex: zIndexRightMenuResponsiveTrue,
           }}
         />
       );
@@ -52,21 +52,24 @@ function SiderightMenuResponsive() {
 
     function EstadoEnFalso() {
       return (
-        <Fab
-          color="primary false"
-          onClick={() => {
-            document.getElementById(
-              "togle-menu-right-responsive"
-            ).checked = true;
-          }}
-        >
-          <i
-            class="fa-solid fa-list-ul"
-            style={{
-              fontSize: "24px",
+        <div className="p-fixed bottom-20px right-20px">
+          <Fab
+            color="primary false"
+            onClick={() => {
+              document.getElementById(
+                "togle-menu-right-responsive"
+              ).checked = true;
             }}
-          />
-        </Fab>
+            style={{ zIndex: zIndexRightMenuResponsive }}
+          >
+            <i
+              class="fa-solid fa-list-ul"
+              style={{
+                fontSize: "24px",
+              }}
+            />
+          </Fab>
+        </div>
       );
     }
   }
@@ -75,7 +78,8 @@ function SiderightMenuResponsive() {
     return (
       <label
         htmlFor="togle-menu-right-responsive"
-        className="backdrop-right-menu"
+        className="backdrop-right-menu p-fixed"
+        style={{ zIndex: zIndexRightMenuResponsiveTrueBackdrop }}
       />
     );
   }
@@ -131,7 +135,8 @@ function buscar_idR(query, tree = {}) {
     if (e.id.startsWith("idR-")) {
       tree[e.id] ??= {};
       const query_idR = `#${e.id} *`;
-      buscar_idR(query_idR, tree[e.id]);
+      console.log({ id: e.id});
+      // buscar_idR(query_idR, tree[e.id]);
     }
   });
   return tree;

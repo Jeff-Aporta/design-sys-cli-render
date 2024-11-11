@@ -15,7 +15,7 @@ function $FMD(props) {
       <_
         {...p}
         onScroll={updateTopRight}
-        className={`root indexed tw-balance ${!F ? "padb-100px" : ""} ${
+        className={`root indexed tw-balance padt-30px ${!F ? "padb-100px" : ""} ${
           props.className ?? ""
         }`}
       >

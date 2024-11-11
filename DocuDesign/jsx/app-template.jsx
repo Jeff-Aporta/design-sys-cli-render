@@ -1,5 +1,14 @@
 window["theme-config-name"] = "dark";
 
+const zIndexFooter = "2";
+const zIndexRightMenuResponsiveTrueBackdrop = "3";
+const zIndexRightMenuResponsive = "4";
+const zIndexRightMenuResponsiveTrue = "5";
+const zIndexMenuLeftResponsiveBackdrop = "6";
+const zIndexMenuLeftResponsive = "7";
+const zIndexHeader = "8";
+const zIndexCursorLight = "9";
+
 const config_template = {
   clases: {
     text: fluidCSS()
@@ -39,7 +48,7 @@ const config_template = {
         className={fluidCSS()
           .lerpX([320, 1000], { fontSize: [18, 20] })
           .end("d-flex flex-wrap mt-100px")}
-        style={{ zIndex: 25, position: "relative" }}
+        style={{ zIndex: zIndexFooter, position: "relative" }}
       >
         <div style={{ fontSize: "60%", width: "100%" }} className="pad-10px">
           <big>
@@ -73,7 +82,13 @@ const config_template = {
 
     function Brands({ social, url }) {
       return (
-        <Link underline="none" color="inherit" target="_blank" href={url} className="flex-1">
+        <Link
+          underline="none"
+          color="inherit"
+          target="_blank"
+          href={url}
+          className="flex-1"
+        >
           <Card className="bright-hover-2 d-center gap-10px pad-20px op-70">
             <big>
               <i class={`fa-brands fa-${social.toLowerCase()}`} />
@@ -91,12 +106,29 @@ const sections = {};
 let isTouchDevice = false;
 
 function App() {
+  let isDragging = false;
+  let startX = 0;
+
   window.addEventListener("scroll", (event) => {
     event.preventDefault();
     window.scrollTo(0, 0);
   });
   window.addEventListener("touchstart", () => {
     isTouchDevice = true;
+  });
+  window.document.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = false;
+  });
+  document.addEventListener("touchmove", (e) => {
+    const touchX = e.touches[0].clientX;
+    const deltaX = touchX - startX;
+    if (deltaX > 50) {
+      document.getElementById("check-menu-responsive").checked = false;
+    }
+    if (deltaX < -20) {
+      document.getElementById("check-menu-responsive").checked = true;
+    }
   });
   window.addEventListener("mousemove", (event) => {
     if (!isTouchDevice) {
@@ -128,19 +160,23 @@ function App() {
   return (
     <Main>
       <HeaderMenu />
-      <CursorEffect mix="soft-light" opacity="0.4" zIndex="0" />
-      <CursorEffect mix="soft-light" opacity="0.15" zIndex="30" />
+      <CursorEffect mix="soft-light" opacity="0.4" />
+      <CursorEffect
+        mix="soft-light"
+        opacity="0.15"
+        zIndex={zIndexCursorLight}
+      />
       <div className="app-content">
         <SideleftMenuResponsive />
         <SideleftMenu />
-        <_ className="main-area"></_>
+        <_ className="main-area" />
         <SiderightMenu />
         <SiderightMenuResponsive />
       </div>
     </Main>
   );
 
-  function CursorEffect({ mix, opacity, zIndex = 0 }) {
+  function CursorEffect({ mix, opacity, zIndex = "0" }) {
     return (
       <div
         className={`cursor-effect no-select minside-win p-fixed transform-centerized ${mix}`}
