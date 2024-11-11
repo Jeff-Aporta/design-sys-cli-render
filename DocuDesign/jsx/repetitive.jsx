@@ -6,7 +6,7 @@ function $CardDef(props) {
     title = (
       <_>
         <$enfasis>{title}</$enfasis>
-        <br />
+        <$$h />
       </_>
     );
   }
