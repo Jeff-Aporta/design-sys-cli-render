@@ -3,7 +3,6 @@ const style_right_menu_item = {
   whiteSpace: "nowrap",
   overflow: "hidden",
   textOverflow: "ellipsis",
-  width: "280px",
 };
 
 const _sideright_brk_ = 1100;
@@ -45,6 +44,7 @@ function SiderightMenuResponsive() {
           className="sidebar right-responsive true p-fixed bottom-10px right-10px br-15px padw-10px padh-20px max-w-300px"
           style={{
             zIndex: zIndexRightMenuResponsiveTrue,
+            width: "280px",
           }}
         />
       );
