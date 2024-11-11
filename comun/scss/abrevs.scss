@@ -107,6 +107,9 @@
   .min-w-#{$i * 50}px {
     min-width: #{$i * 50}px;
   }
+  .max-w-#{$i * 50}px {
+    max-width: #{$i * 50}px;
+  }
 }
 
 .minside-win {

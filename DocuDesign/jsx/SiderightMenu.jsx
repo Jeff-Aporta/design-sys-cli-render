@@ -42,7 +42,7 @@ function SiderightMenuResponsive() {
             ).checked = false;
           }}
           elevation={6}
-          className="sidebar right-responsive true p-fixed bottom-20px right-20px br-15px pad-20px"
+          className="sidebar right-responsive true p-fixed bottom-10px right-10px br-15px padw-10px padh-20px max-w-300px"
           style={{
             zIndex: zIndexRightMenuResponsiveTrue,
           }}

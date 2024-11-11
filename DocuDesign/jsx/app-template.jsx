@@ -106,8 +106,9 @@ const sections = {};
 let isTouchDevice = false;
 
 function App() {
-  let isDragging = false;
+  let gestureMenuLeft = false;
   let startX = 0;
+  let startY = 0;
 
   window.addEventListener("scroll", (event) => {
     event.preventDefault();
@@ -116,30 +117,41 @@ function App() {
   window.addEventListener("touchstart", () => {
     isTouchDevice = true;
   });
+  window.addEventListener("resize", () => {
+    isTouchDevice = false;
+  });
   window.document.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
-    isDragging = false;
+    startY = e.touches[0].clientY;
+    gestureMenuLeft = true;
   });
   document.addEventListener("touchmove", (e) => {
     const touchX = e.touches[0].clientX;
+    const touchY = e.touches[0].clientY;
     const deltaX = touchX - startX;
-    if (deltaX > 50) {
+    const deltaY = Math.abs(touchY - startY);
+    if (deltaY > 15) {
+      gestureMenuLeft = false;
+      return;
+    }
+    if (!gestureMenuLeft) {
+      return;
+    }
+    if (deltaX > 40) {
       document.getElementById("check-menu-responsive").checked = false;
     }
-    if (deltaX < -20) {
+    if (deltaX < -40) {
       document.getElementById("check-menu-responsive").checked = true;
     }
   });
   window.addEventListener("mousemove", (event) => {
-    if (!isTouchDevice) {
-      document
-        .querySelectorAll(".cursor-effect")
-        .forEach(
-          (e) =>
-            (e.style.left = event.clientX + "px") &
-            (e.style.top = event.clientY + "px")
-        );
-    }
+    document
+      .querySelectorAll(".cursor-effect")
+      .forEach(
+        (e) =>
+          (e.style.left = (isTouchDevice ? "-99999" : event.clientX) + "px") &
+          (e.style.top = (isTouchDevice ? "-99999" : event.clientY) + "px")
+      );
   });
   window.addEventListener("mousedown", (event) => {
     if (!isTouchDevice) {
@@ -183,8 +195,8 @@ function App() {
         data-opacity={opacity}
         style={{
           transition: "opacity 0.2s",
-          left: "9999px",
-          top: "9999px",
+          left: "-99999px",
+          top: "-99999px",
           zIndex,
           opacity,
           background:
