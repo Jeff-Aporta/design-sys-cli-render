@@ -158,6 +158,10 @@ function App() {
     checkMenuleftGesture();
 
     function checkMenuleftGesture() {
+      const targetElement = e.target.closest('.copy-element-theme');
+      if (targetElement) {
+        return;
+      }
       if (Math.abs(deltaY) > 15) {
         gestureMenuLeft = false;
         return;
