@@ -1,9 +1,9 @@
 const style_right_menu_item = {
-  maxWidth: "250px",
+  maxWidth: "300px",
   whiteSpace: "nowrap",
   overflow: "hidden",
   textOverflow: "ellipsis",
-  width: "200px",
+  width: "280px",
 };
 
 const _sideright_brk_ = 1100;

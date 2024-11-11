@@ -3,6 +3,7 @@ function ActivadorMenuIzquierda() {
     <label
       className={fluidCSS()
         .gtX(_sideleft_brk_, { display: "none" })
+        .gtX(400, { paddingLeft: "10px", paddingRight: "10px" })
         .end("activator-menuleft c-pointer")}
       htmlFor="check-menu-responsive"
       onClick={() => {
@@ -12,8 +13,8 @@ function ActivadorMenuIzquierda() {
       <big>
         <big>
           <big>
-            <i className="fa-solid fa-bars padw-10px true" />
-            <i className="fa-solid fa-times c-skyblue bright-hover-1-5 padw-10px false" />
+            <i className="fa-solid fa-bars true" />
+            <i className="fa-solid fa-times c-skyblue bright-hover-1-5 false" />
           </big>
         </big>
       </big>
@@ -28,7 +29,7 @@ function HeaderMenu() {
       className="header d-flex jc-sb pad-10px bb-1px-gray no-text-select"
       style={{ zIndex: zIndexHeader }}
     >
-      <div className="header_logo d-center gap-20px">
+      <div className="header_logo d-center gap-10px">
         <ActivadorMenuIzquierda />
         <div
           className="d-center gap-10px bright-hover-1-2"
@@ -53,7 +54,11 @@ function HeaderMenu() {
           </$>
         </div>
       </div>
-      <div className="header_social d-center gap-10px">
+      <div
+        className={fluidCSS()
+          .ltX(400, { opacity: "0.3" })
+          .end("header_social d-center gap-10px")}
+      >
         {(() => {
           const { telegram, whatsapp, youtube, github } =
             config_template?.banner?.right?.social ?? {};
