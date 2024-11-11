@@ -135,7 +135,6 @@ function buscar_idR(query, tree = {}) {
     if (e.id.startsWith("idR-")) {
       tree[e.id] ??= {};
       const query_idR = `#${e.id} *`;
-      console.log({ id: e.id});
       // buscar_idR(query_idR, tree[e.id]);
     }
   });
