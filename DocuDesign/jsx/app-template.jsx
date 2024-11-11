@@ -2,8 +2,8 @@ window["theme-config-name"] = "dark";
 
 const zIndexFooter = "2";
 const zIndexRightMenuResponsiveTrueBackdrop = "3";
-const zIndexRightMenuResponsive = "4";
-const zIndexRightMenuResponsiveTrue = "5";
+const zIndexRightMenuResponsiveTrue = "4";
+const zIndexRightMenuResponsive = "5";
 const zIndexMenuLeftResponsiveBackdrop = "6";
 const zIndexMenuLeftResponsive = "7";
 const zIndexHeader = "8";
@@ -105,10 +105,33 @@ const sections = {};
 
 let isTouchDevice = false;
 
+function hide_menus() {
+  hide_menuLeft();
+  hide_menuIndexes();
+}
+function hide_menuIndexes() {
+  document.getElementById("togle-menu-right-responsive").checked = false;
+}
+
+function hide_menuLeft() {
+  document.getElementById("check-menu-responsive").checked = true;
+}
+
+function show_menuLeft() {
+  document.getElementById("check-menu-responsive").checked = false;
+  hide_menuIndexes();
+}
+
 function App() {
   let gestureMenuLeft = false;
   let startX = 0;
   let startY = 0;
+
+  window.addEventListener("keyup", (evnt) => {
+    if (evnt.key === "Escape") {
+      hide_menus();
+    }
+  });
 
   window.addEventListener("scroll", (event) => {
     event.preventDefault();
@@ -119,8 +142,7 @@ function App() {
   });
   window.addEventListener("resize", () => {
     isTouchDevice = false;
-    document.getElementById("check-menu-responsive").checked = true;
-    document.getElementById("togle-menu-right-responsive").checked = false;
+    hide_menus();
   });
   window.document.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
@@ -144,10 +166,10 @@ function App() {
         return;
       }
       if (deltaX > 40) {
-        document.getElementById("check-menu-responsive").checked = false;
+        show_menuLeft();
       }
       if (deltaX < -40) {
-        document.getElementById("check-menu-responsive").checked = true;
+        hide_menuLeft();
       }
     }
   });

@@ -50,11 +50,18 @@ html {
   .backdrop-right-menu {
     opacity: 1;
   }
+  .true,
+  .false {
+    transition: scale 0.25s, opacity 0.25s;
+    transform-origin: bottom right;
+  }
   .true {
-    display: block;
+    scale: 1;
+    opacity: 1;
   }
   .false {
-    display: none;
+    scale: 0;
+    opacity: 0;
   }
   &:has(input[type="checkbox"]:not(:checked)) {
     .backdrop-right-menu {
@@ -62,10 +69,12 @@ html {
       pointer-events: none;
     }
     .true {
-      display: none;
+      scale: 0;
+      opacity: 0;
     }
     .false {
-      display: block;
+      scale: 1;
+      opacity: 1;
     }
   }
 }

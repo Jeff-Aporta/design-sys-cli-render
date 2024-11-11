@@ -12,8 +12,8 @@ function ActivadorMenuIzquierda() {
       <big>
         <big>
           <big>
-            <i className="fa-solid fa-bars true" />
-            <i className="fa-solid fa-times false c-skyblue" />
+            <i className="fa-solid fa-bars padw-10px true" />
+            <i className="fa-solid fa-times c-skyblue bright-hover-1-5 padw-10px false" />
           </big>
         </big>
       </big>
@@ -30,13 +30,10 @@ function HeaderMenu() {
     >
       <div className="header_logo d-center gap-20px">
         <ActivadorMenuIzquierda />
-        <Link
-          className="c-pointer d-center gap-10px bright-hover-1-2"
+        <div
+          className="d-center gap-10px bright-hover-1-2"
           color="inherit"
           underline="hover"
-          onClick={() => {
-            changeContent({ id: config_template.default_id, config_template });
-          }}
         >
           {(() => {
             const logo = config_template?.banner?.left?.logo;
@@ -54,7 +51,7 @@ function HeaderMenu() {
           <$ variant="h8" className="fw-bolder">
             {config_template?.banner?.left?.label ?? "Doc name not specified"}
           </$>
-        </Link>
+        </div>
       </div>
       <div className="header_social d-center gap-10px">
         {(() => {
