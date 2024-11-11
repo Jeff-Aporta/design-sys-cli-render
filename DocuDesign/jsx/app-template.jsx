@@ -50,7 +50,7 @@ const config_template = {
           .end("d-flex flex-wrap mt-100px")}
         style={{ zIndex: zIndexFooter, position: "relative" }}
       >
-        <div style={{ fontSize: "60%", width: "100%" }} className="pad-10px">
+        <div style={{ fontSize: "60%", width: "100%" }} className="pad-10px padt-30px">
           <big>
             <b>Jeffrey Agudelo</b>
           </big>
