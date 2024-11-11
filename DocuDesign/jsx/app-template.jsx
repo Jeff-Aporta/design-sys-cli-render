@@ -119,6 +119,8 @@ function App() {
   });
   window.addEventListener("resize", () => {
     isTouchDevice = false;
+    document.getElementById("check-menu-responsive").checked = true;
+    document.getElementById("togle-menu-right-responsive").checked = false;
   });
   window.document.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
@@ -129,19 +131,24 @@ function App() {
     const touchX = e.touches[0].clientX;
     const touchY = e.touches[0].clientY;
     const deltaX = touchX - startX;
-    const deltaY = Math.abs(touchY - startY);
-    if (deltaY > 15) {
-      gestureMenuLeft = false;
-      return;
-    }
-    if (!gestureMenuLeft) {
-      return;
-    }
-    if (deltaX > 40) {
-      document.getElementById("check-menu-responsive").checked = false;
-    }
-    if (deltaX < -40) {
-      document.getElementById("check-menu-responsive").checked = true;
+    const deltaY = touchY - startY;
+
+    checkMenuleftGesture();
+
+    function checkMenuleftGesture() {
+      if (Math.abs(deltaY) > 15) {
+        gestureMenuLeft = false;
+        return;
+      }
+      if (!gestureMenuLeft) {
+        return;
+      }
+      if (deltaX > 40) {
+        document.getElementById("check-menu-responsive").checked = false;
+      }
+      if (deltaX < -40) {
+        document.getElementById("check-menu-responsive").checked = true;
+      }
     }
   });
   window.addEventListener("mousemove", (event) => {
