@@ -43,12 +43,10 @@ function SiderightMenuResponsive() {
           }}
           elevation={6}
           className={`
-            sidebar right-responsive true p-fixed bottom-10px 
-            right-10px br-15px padw-10px padh-20px max-w-300px 
-            d-center
-          `
-            .replace(/\s+/g, "")
-            .trim()}
+            sidebar right-responsive true p-fixed
+            bottom-10px right-10px br-15px padw-10px 
+            padh-20px max-w-300px d-center
+          `}
           style={{
             zIndex: zIndexRightMenuResponsiveTrue,
             width: "280px",
