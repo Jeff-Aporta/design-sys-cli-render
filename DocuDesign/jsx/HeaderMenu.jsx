@@ -43,7 +43,7 @@ function HeaderMenu() {
                   alt=""
                   src={logo}
                   style={{ width: "30px", height: "30px" }}
-                  className={fluidCSS().ltX(450, { display: "none" }).end()}
+                  className={fluidCSS().ltX(500, { display: "none" }).end()}
                 />
               );
             }
