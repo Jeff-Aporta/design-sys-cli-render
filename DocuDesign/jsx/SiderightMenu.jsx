@@ -1,6 +1,6 @@
 const style_right_menu_item = {
   maxWidth: "280px",
-  width: "150px",
+  minWidth: "150px",
   whiteSpace: "nowrap",
   overflow: "hidden",
   textOverflow: "ellipsis",
