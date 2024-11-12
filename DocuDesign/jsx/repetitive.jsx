@@ -1,5 +1,8 @@
 function $CardDef(props) {
   let { title, children, variant } = props;
+  delete props.title;
+  delete props.children;
+  delete props.variant;
   if (typeof title == "string") {
     title = (
       <_>
