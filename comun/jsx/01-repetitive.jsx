@@ -18,10 +18,11 @@ function $code(props) {
 }
 
 function $PR(props) {
-  const { children, lang } = props;
+  const { children, lang, src } = props;
   const p = { ...props };
   delete p.children;
   delete p.lang;
+  children??=loadStringsSync(src);
   return (
     <$CardCopy {...p}>
       <pre className="prettyprint">
