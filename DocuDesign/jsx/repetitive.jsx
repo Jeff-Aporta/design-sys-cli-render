@@ -19,15 +19,24 @@ function $CardDef(props) {
 }
 
 function $ul(props) {
-  return (
-    <ul {...props} className={(props.className ?? "") + "theme ul"} />
-  );
+  const p = { ...props };
+  const { children } = props;
+  p.children = <$F>{children}</$F>;
+  return <ul {...p} className={`${props.className ?? ""} theme ul`} />;
+}
+
+function $p(props) {
+  const p = { ...props };
+  const { children } = props;
+  p.children = <$F>{children}</$F>;
+  return <p {...p} className={`${props.className ?? ""} theme p`} />;
 }
 
 function $li(props) {
-  return (
-    <li {...props} className={(props.className ?? "") + "theme li"} />
-  );
+  const p = { ...props };
+  const { children } = props;
+  p.children = <$F>{children}</$F>;
+  return <li {...p} className={`${props.className ?? ""} theme li`} />;
 }
 
 function $CardF(props) {
