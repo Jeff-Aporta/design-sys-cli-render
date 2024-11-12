@@ -15,9 +15,9 @@ function $FMD(props) {
       <_
         {...p}
         onScroll={updateTopRight}
-        className={`root indexed tw-balance padt-30px ${!F ? "padb-100px" : ""} ${
-          props.className ?? ""
-        }`}
+        className={`root indexed tw-balance padt-30px ${
+          !F ? "padb-100px" : ""
+        } ${props.className ?? ""}`}
       >
         <$F className="padw-20px">{children}</$F>
         {F}
@@ -42,7 +42,11 @@ function $F({ children, className = "" }) {
     );
   }
 
-  if (typeof children == "string") {
+  const esTexto = typeof children == "string";
+
+  if (!esTexto) {
+    return <$F>{[children]}</$F>;
+  } else {
     const lines = children.split("\n");
 
     return lines.map((line) => {
@@ -177,7 +181,9 @@ function $F({ children, className = "" }) {
             {parts.map((part) => {
               if (part.startsWith("`") && part.endsWith("`")) {
                 let content = part.slice(1, -1);
-                return <code className="md-code-inline">{everywhere(content)}</code>;
+                return (
+                  <code className="md-code-inline">{everywhere(content)}</code>
+                );
               }
               return everywhere(part);
             })}

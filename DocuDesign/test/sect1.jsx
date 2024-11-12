@@ -8,6 +8,9 @@ function _sect1() {
       <$h />
       ###### Pensado para documentaciones
       <$$h />
+      <$CardDef title="Detalles Técnicos de Implementación">
+        <div>Hola</div>
+      </$CardDef>
       (ej. `props = &#123; style: styleDOM, ... &#125;`).
       <$index>
         <h1>Hola</h1>
