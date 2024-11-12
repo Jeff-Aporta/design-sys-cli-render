@@ -9,7 +9,19 @@ function _sect1() {
       ###### Pensado para documentaciones
       <$$h />
       <$CardDef title="Detalles Técnicos de Implementación">
-        <div>Hola</div>
+        <$ul>
+          <$li>
+            La función `JS2CSS` transforma el objeto `objJs` en texto CSS,
+            manejando correctamente las reglas anidadas y eliminando caracteres
+            superfluos, como comillas o saltos de línea adicionales.
+          </$li>
+          <$li>
+            `insertStyle` utiliza `JS2CSS` para generar el CSS formateado y lo
+            inyecta en el elemento `style.innerHTML`, ya sea en un
+            `&lt;style&gt;` nuevo o en uno ya existente, según lo especificado
+            en `props`.
+          </$li>
+        </$ul>
       </$CardDef>
       (ej. `props = &#123; style: styleDOM, ... &#125;`).
       <$index>

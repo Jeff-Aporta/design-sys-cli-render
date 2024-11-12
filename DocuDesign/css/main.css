@@ -11,13 +11,20 @@ html {
   overflow-y: auto !important;
 }
 
-.md-code-inline{
+.md-code-inline {
   background-color: rgba(128, 128, 128, 0.3);
   color: lightgoldenrodyellow;
   padding-left: 5px;
   padding-right: 5px;
   margin-left: 5px;
   margin-right: 5px;
+}
+
+.theme {
+  &.ul,
+  &.li {
+    padding: 10px;
+  }
 }
 
 .container-right-responsive {

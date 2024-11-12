@@ -18,6 +18,18 @@ function $CardDef(props) {
   );
 }
 
+function $ul(props) {
+  return (
+    <ul {...props} className={(props.className ?? "") + "theme ul"} />
+  );
+}
+
+function $li(props) {
+  return (
+    <li {...props} className={(props.className ?? "") + "theme li"} />
+  );
+}
+
 function $CardF(props) {
   return (
     <Card
