@@ -1,11 +1,11 @@
 function $CardDef(props) {
-  let { title, children } = props;
-  delete props.title;
-  delete props.children;
+  let { title, children, variant } = props;
   if (typeof title == "string") {
     title = (
       <_>
-        <$enfasis>{title}</$enfasis>
+        <$enfasis variant={variant}>
+          <$F>{title}</$F>
+        </$enfasis>
         <$$h />
       </_>
     );
@@ -59,8 +59,16 @@ function $index(props) {
   );
 }
 
-function $enfasis({ children }) {
-  return <strong className="c-skyblue">{children}</strong>;
+function $enfasis({ children, variant = "1" }) {
+  const enf = {
+    1: {
+      className: "c-skyblue",
+    },
+    2: {
+      className: "c-darkorchid",
+    },
+  };
+  return <strong {...enf[variant]}>{children}</strong>;
 }
 
 function $secundario({ children }) {
