@@ -68,7 +68,7 @@ function $enfasis({ children, variant = "1" }) {
       className: "c-skyblue",
     },
     2: {
-      className: "c-darkorchid",
+      className: "c-plum",
     },
   };
   return <strong {...enf[variant]}>{children}</strong>;
