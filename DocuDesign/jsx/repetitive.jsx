@@ -114,34 +114,58 @@ function _$Bienvenido({ name_app, children, img_url, label = "Bienvenido" }) {
   );
 }
 
-function _$testing({ src_params_iife,src_params_module  }) {
-  const sep = <_><$h />
-  <$hr />
-  <$h /></_>
-  return (<$index label="Testing">
-    <Card className="pad-10px">
-      <$h1>Comprobar funcionamiento</$h1>
-      {sep}
-      <$h5>IIFE</$h5>
-      <$$h />
-      <$PR
-        lang="html"
-        elevation={0}
-        src_params={src_params_iife}
-        src="https://jeff-aporta.github.io/design-sys-cli-render/DocuDesign/fragments/test-iife.txt"
-      />
-      {sep}
-      <$h5>Module</$h5>
-      <$$h />
-      <$PR
-        lang="html"
-        elevation={0}
-        src_params={src_params_module}
-        src="https://jeff-aporta.github.io/design-sys-cli-render/DocuDesign/fragments/test-module.txt"
-      />
-    </Card>
-  </$index>)
-
+function _$testing({ src_params_iife, src_params_module }) {
+  if (!src_params_iife && !src_params_module) {
+    return;
+  }
+  const sep = (
+    <_>
+      <$h />
+      <$hr />
+      <$h />
+    </_>
+  );
+  return (
+    <$index label="Testing">
+      <Card className="pad-10px">
+        <$h1>Comprobar funcionamiento</$h1>
+        {(() => {
+          if (src_params_iife) {
+            return (
+              <_>
+                {sep}
+                <$h5>IIFE</$h5>
+                <$$h />
+                <$PR
+                  lang="html"
+                  elevation={0}
+                  src_params={src_params_iife}
+                  src="https://jeff-aporta.github.io/design-sys-cli-render/DocuDesign/fragments/test-iife.txt"
+                />
+              </_>
+            );
+          }
+        })()}
+        {(() => {
+          if (src_params_module) {
+            return (
+              <_>
+                {sep}
+                <$h5>Module</$h5>
+                <$$h />
+                <$PR
+                  lang="html"
+                  elevation={0}
+                  src_params={src_params_module}
+                  src="https://jeff-aporta.github.io/design-sys-cli-render/DocuDesign/fragments/test-module.txt"
+                />
+              </_>
+            );
+          }
+        })()}
+      </Card>
+    </$index>
+  );
 }
 function _$Instalación({ url_cdn, npm_pack }) {
   return (
