@@ -24,14 +24,18 @@ function $PR(props) {
   delete p.lang;
   delete p.src;
   delete p.src_params;
-  children ??= (()=>{
-    const str = loadStringsSync(src);
-    if(src_params){
-      Object.entries(src_params).forEach(([key, value])=>{
-        str = str.replaceAll(`$${key}$`, value);
-      })
+  children ??= (() => {
+    try {
+      let str = loadStringsSync(src);
+      if (src_params) {
+        Object.entries(src_params).forEach(([key, value]) => {
+          str = str.replaceAll(`$${key}$`, value);
+        });
+      }
+      return str;
+    } catch (error) {
+      return "Error not found " + src;
     }
-    return str;
   })();
   return (
     <$CardCopy {...p}>
