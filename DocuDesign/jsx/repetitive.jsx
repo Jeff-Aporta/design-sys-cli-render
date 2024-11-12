@@ -128,7 +128,7 @@ function _$testing({ src_params_iife,src_params_module  }) {
         lang="html"
         elevation={0}
         src_params={src_params_iife}
-        src="https://jeff-aporta.github.io/design-sys-cli-render/DocuDesign/fragments/test-iife.ejs"
+        src="https://jeff-aporta.github.io/design-sys-cli-render/DocuDesign/fragments/test-iife.txt"
       />
       {sep}
       <$h5>Module</$h5>
@@ -137,7 +137,7 @@ function _$testing({ src_params_iife,src_params_module  }) {
         lang="html"
         elevation={0}
         src_params={src_params_module}
-        src="https://jeff-aporta.github.io/design-sys-cli-render/DocuDesign/fragments/test-module.ejs"
+        src="https://jeff-aporta.github.io/design-sys-cli-render/DocuDesign/fragments/test-module.txt"
       />
     </Card>
   </$index>)
