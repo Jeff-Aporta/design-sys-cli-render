@@ -18,12 +18,21 @@ function $code(props) {
 }
 
 function $PR(props) {
-  let { children, lang, src } = props;
+  let { children, lang, src, src_params } = props;
   const p = { ...props };
   delete p.children;
   delete p.lang;
   delete p.src;
-  children ??= loadStringsSync(src);
+  delete p.src_params;
+  children ??= (()=>{
+    const str = loadStringsSync(src);
+    if(src_params){
+      Object.entries(src_params).forEach(([key, value])=>{
+        str = str.replaceAll(`$${key}$`, value);
+      })
+    }
+    return str;
+  })();
   return (
     <$CardCopy {...p}>
       <pre className="prettyprint">

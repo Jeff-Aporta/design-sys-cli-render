@@ -8,6 +8,18 @@ function _sect1() {
       <$h />
       ###### Pensado para documentaciones
       <$$h />
+      <_$testing
+        src_params_iife={{
+          url: "test-url.js",
+          name: "name_test",
+          comment: "comment test OK",
+        }}
+        src_params_module={{
+          url: "test-url.js",
+          name: "name_test",
+          comment: "comment test OK",
+        }}
+      />
       <$CardDef title="Detalles Técnicos de Implementación">
         <$ul>
           <$li>
