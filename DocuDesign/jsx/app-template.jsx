@@ -50,7 +50,10 @@ const config_template = {
           .end("d-flex flex-wrap mt-100px")}
         style={{ zIndex: zIndexFooter, position: "relative" }}
       >
-        <div style={{ fontSize: "60%", width: "100%" }} className="pad-10px padt-30px">
+        <div
+          style={{ fontSize: "60%", width: "100%" }}
+          className="pad-10px padt-30px"
+        >
           <big>
             <b>Jeffrey Agudelo</b>
           </big>
@@ -126,6 +129,19 @@ function App() {
   let gestureMenuLeft = false;
   let startX = 0;
   let startY = 0;
+  let $mouseX = -99999;
+  let $mouseY = -99999;
+  let isKeyPressed = {};
+
+  document.addEventListener("keydown", (event) => {
+    isKeyPressed[event.key] = true;
+    setTimeout(updateLightCursor);
+  });
+
+  document.addEventListener("keyup", (event) => {
+    isKeyPressed[event.key] = false;
+    setTimeout(updateLightCursor);
+  });
 
   window.addEventListener("keyup", (evnt) => {
     if (evnt.key === "Escape") {
@@ -158,7 +174,7 @@ function App() {
     checkMenuleftGesture();
 
     function checkMenuleftGesture() {
-      const targetElement = e.target.closest('.copy-element-theme');
+      const targetElement = e.target.closest(".copy-element-theme");
       if (targetElement) {
         return;
       }
@@ -178,14 +194,22 @@ function App() {
     }
   });
   window.addEventListener("mousemove", (event) => {
+    $mouseX = event.clientX;
+    $mouseY = event.clientY;
+    updateLightCursor();
+  });
+
+  function updateLightCursor() {
+    const light_off = isKeyPressed["Control"] || isTouchDevice;
     document
       .querySelectorAll(".cursor-effect")
       .forEach(
         (e) =>
-          (e.style.left = (isTouchDevice ? "-99999" : event.clientX) + "px") &
-          (e.style.top = (isTouchDevice ? "-99999" : event.clientY) + "px")
+          (e.style.left = (light_off ? "-99999" : $mouseX) + "px") &
+          (e.style.top = (light_off ? "-99999" : $mouseY) + "px")
       );
-  });
+  }
+
   window.addEventListener("mousedown", (event) => {
     if (!isTouchDevice) {
       document
@@ -205,10 +229,10 @@ function App() {
   return (
     <Main>
       <HeaderMenu />
-      <CursorEffect mix="soft-light" opacity="0.4" />
+      <CursorEffect mix="soft-light" opacity="0.3" />
       <CursorEffect
         mix="soft-light"
-        opacity="0.15"
+        opacity="0.1"
         zIndex={zIndexCursorLight}
       />
       <div className="app-content">
