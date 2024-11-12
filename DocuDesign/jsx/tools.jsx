@@ -61,6 +61,9 @@ function changeContent({
   setTimeout(() => {
     updateIndexes();
     updateTopRight();
+    try {
+      PR.prettyPrint();
+    } catch (error) {}
   });
 
   if (save) {
