@@ -154,7 +154,7 @@ function _$testing({ src_params_iife, src_params_module, src_params_nodemodule }
                 <$h5>Module in Node JS</$h5>
                 <$$h />
                 <$PR
-                  lang="html"
+                  lang="javascript"
                   elevation={0}
                   src_params={src_params_nodemodule}
                   src="https://jeff-aporta.github.io/design-sys-cli-render/DocuDesign/fragments/test-nodemodule.txt"
