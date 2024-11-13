@@ -114,7 +114,11 @@ function _$Bienvenido({ name_app, children, img_url, label = "Bienvenido" }) {
   );
 }
 
-function _$testing({ src_params_iife, src_params_module, src_params_nodemodule }) {
+function _$testing({
+  src_params_iife,
+  src_params_module,
+  src_params_nodemodule,
+}) {
   if (!src_params_iife && !src_params_module) {
     return;
   }
@@ -134,7 +138,10 @@ function _$testing({ src_params_iife, src_params_module, src_params_nodemodule }
             return (
               <_>
                 {sep}
-                <$h5>IIFE</$h5>
+                <$h5>Uso con IIFE</$h5>
+                <$h />
+                Para comprobar que Fluid CSS está funcionando correctamente con
+                IIFE:
                 <$$h />
                 <$PR
                   lang="html"
@@ -151,7 +158,9 @@ function _$testing({ src_params_iife, src_params_module, src_params_nodemodule }
             return (
               <_>
                 {sep}
-                <$h5>Module in Node JS</$h5>
+                <$h5>Uso como módulo en Node.js</$h5>
+                <$h />
+                Para verificar Fluid CSS como módulo:
                 <$$h />
                 <$PR
                   lang="javascript"
@@ -234,8 +243,8 @@ function _$Instalación({ url_cdn, npm_pack }) {
         <$h />
         <$ variant="h4">npm</$>
         <p>
-          Ejecuta el siguiente comando para agregar ASCII Map Loader en su
-          proyecto:
+          También puedes instalarlo como un módulo de npm ejecutando el
+          siguiente comando en tu proyecto:
         </p>
         <$CardCopy elevation={0} className="pad-20px">
           <span className="c-yellow">npm</span> install{" "}
