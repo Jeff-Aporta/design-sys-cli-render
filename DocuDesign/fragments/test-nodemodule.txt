@@ -1,0 +1,3 @@
+import $name$ from "$nodepack$"
+    
+console.log($name$) // $comment$

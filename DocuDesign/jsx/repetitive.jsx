@@ -114,7 +114,7 @@ function _$Bienvenido({ name_app, children, img_url, label = "Bienvenido" }) {
   );
 }
 
-function _$testing({ src_params_iife, src_params_module }) {
+function _$testing({ src_params_iife, src_params_module, src_params_nodemodule }) {
   if (!src_params_iife && !src_params_module) {
     return;
   }
@@ -141,6 +141,23 @@ function _$testing({ src_params_iife, src_params_module }) {
                   elevation={0}
                   src_params={src_params_iife}
                   src="https://jeff-aporta.github.io/design-sys-cli-render/DocuDesign/fragments/test-iife.txt"
+                />
+              </_>
+            );
+          }
+        })()}
+        {(() => {
+          if (src_params_nodemodule) {
+            return (
+              <_>
+                {sep}
+                <$h5>Module</$h5>
+                <$$h />
+                <$PR
+                  lang="html"
+                  elevation={0}
+                  src_params={src_params_nodemodule}
+                  src="https://jeff-aporta.github.io/design-sys-cli-render/DocuDesign/fragments/test-nodemodule.txt"
                 />
               </_>
             );
