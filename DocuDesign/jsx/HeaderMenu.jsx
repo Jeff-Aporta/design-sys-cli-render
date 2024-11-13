@@ -119,13 +119,13 @@ function HeaderMenu() {
 function IconSocialTop({ lbl, url, _icon, black = false, color, brk = 700 }) {
   const icon = (
     <i
-      className={`fa-brands fa-${_icon} icon-social ${black ? "black" : ""}`}
+      className={`fa-brands fa-${_icon} ${black ? "black" : ""}`}
       style={{
-        color,
+        color: "rgb(170, 200, 220)",
       }}
     />
   );
-  const alw = "d-center gap-10px";
+  const alw = "d-center gap-10px c-skyblue bright-hover-1-5";
   const cls = fluidCSS().ltX(brk, { display: "none" }).end(alw);
   const full = (
     <span className={cls}>
@@ -134,7 +134,7 @@ function IconSocialTop({ lbl, url, _icon, black = false, color, brk = 700 }) {
     </span>
   );
   return (
-    <Link target="_blank" href={url} color="inherit" underline="hover">
+    <Link target="_blank" href={url} color="inherit" underline="none">
       <Tooltip
         title={lbl}
         className={fluidCSS().gtX(brk, { display: "none" }).end(alw)}
