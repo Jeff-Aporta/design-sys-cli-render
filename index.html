@@ -1,100 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sistema de diseños estáticos</title>
-    <script src="https://jeff-aporta.github.io/ascii-maploader/static/js/index.all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-    <script>
-      asciiMap.CLI.react_mui_fa();
-      asciiMap.CLI.fluidCSS();
-      asciiMap
-        .tree("comun/jsx")
-        .jsx("00-mui-setup", "01-fluids", "01-repetitive")
-        .writehtml();
 
-      asciiMap.tree("comun/css").css("main-sass", "fluids", "PR").writehtml();
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="text/babel">
-      function App() {
-        const lib = "https://jeff-aporta.github.io/design-sys-cli-render/";
-        const DocuDesign = lib + "DocuDesign/static/";
-        const DocuDesignCSS = DocuDesign + "all.styles.min.css";
-        const DocuDesignJS = DocuDesign + "all.templates.min.js";
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de diseños estáticos</title>
+  <script src="https://jeff-aporta.github.io/ascii-maploader/static/js/index.all.min.js"></script>
+  <script>
+    asciiMap.CLI.react_mui_fa();
+    asciiMap.CLI.fluidCSS();
+    asciiMap
+      .tree()
+      .subDir("DocuDesign/static", (static) => {
+        static.js("all.templates.min")
+      })
+      .jsx("index")
+      .writehtml();
+  </script>
+  <style>
+    body{
+      background-color: cadetblue;
+    }
+  </style>
+</head>
 
-        setTimeout(PR.prettyPrint);
+<body>
+  <div id="root"></div>
+</body>
 
-        return (
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Paper className="pad-20px">
-              <Typography variant="h2">Colección de elementos</Typography>
-              <Typography variant="h3">Dessign System</Typography>
-              <Typography variant="h4">Client-side-rendering</Typography>
-              <br />
-              <$hr />
-              <$$h />
-              <Typography variant="h5">DocuDesign</Typography>
-              <$$h />
-              <Button
-                target="_blank"
-                href="DocuDesign/test"
-                variant="contained"
-              >
-                Vista previa
-              </Button>
-              <br />
-              <br />
-              <$BasicTabs
-                onIndexChange={(e, i) => i == 1 && setTimeout(PR.prettyPrint)}
-                style={{ border: "1px solid rgba(128, 128, 128, 0.2)" }}
-                children={{
-                  DEPENDENCIAS: (
-                    <$Card
-                      elevation={0}
-                      style={{
-                        padding: "40px 10px 40px 10px",
-                        color: "hotpink",
-                      }}
-                    >
-                      {DocuDesignCSS}
-                      <br />
-                      {DocuDesignJS}
-                    </$Card>
-                  ),
-                  HTML: (
-                    <$PR
-                      elevation={0}
-                      lang="html"
-                      style={{
-                        color: "hotpink",
-                      }}
-                    >
-                      {[
-                        `\u003Cscript type="text/javascript"`,
-                        `  src="${DocuDesignJS}"`,
-                        ">",
-                        `\u003C/script>`,
-                        `\u003Clink rel="stylesheet"`,
-                        `  href="${DocuDesignCSS}"`,
-                        `>`,
-                      ].join("\n")}
-                    </$PR>
-                  ),
-                }}
-              />
-            </Paper>
-          </ThemeProvider>
-        );
-      }
-
-      setTimeout(() =>
-        ReactDOM.render(<App />, document.getElementById("root"))
-      );
-    </script>
-  </body>
 </html>

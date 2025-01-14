@@ -97,6 +97,10 @@ function _$Bienvenido({ name_app, children, img_url, label = "Bienvenido" }) {
             .ltX(1050, { display: "none" })
             .lerpX([1050, 1200], { width: [250, 270], height: [250, 270] })
             .end("br-30px no-select")}
+          style={{
+            backgroundColor: "white",
+            objectFit: "contain",
+          }}
         />
         <$F>{children}</$F>
         <center>
@@ -107,6 +111,10 @@ function _$Bienvenido({ name_app, children, img_url, label = "Bienvenido" }) {
               .gtX(1050, { display: "none" })
               .lerpX([600, 1050], { width: [220, 300], height: [220, 300] })
               .end("br-30px")}
+            style={{
+              backgroundColor: "white",
+              objectFit: "contain",
+            }}
           />
         </center>
       </div>
