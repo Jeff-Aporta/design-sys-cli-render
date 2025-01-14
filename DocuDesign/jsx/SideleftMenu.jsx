@@ -94,9 +94,7 @@ function ContentLeftMenu({ idSelected, def, mapSite }) {
   function Repositorio() {
     if (!config_template.repo) {
       return (
-        <Typography variant="h4" className="padw-20px">
-          Repositorio no definido
-        </Typography>
+        ""
       );
     }
     return (
