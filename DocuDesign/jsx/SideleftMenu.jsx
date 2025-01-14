@@ -2,6 +2,7 @@ const _sideleft_brk_ = 900;
 
 function generateAcordionMenuleft({ element, def, idSelected, mapSite }) {
   const exp = element.childs.some((child) => child.id == idSelected);
+
   return (
     <Acord_SideLeft title={element.lbl ?? "No label"} defaultExpanded={exp}>
       {element.childs.map((child) => {

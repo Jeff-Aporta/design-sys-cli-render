@@ -43,7 +43,11 @@ function HeaderMenu() {
                 <img
                   alt=""
                   src={logo}
-                  style={{ width: "30px", height: "30px" }}
+                  style={{
+                    width: "30px",
+                    height: "30px",
+                    objectFit: "contain",
+                  }}
                   className={fluidCSS().ltX(500, { display: "none" }).end()}
                 />
               );
