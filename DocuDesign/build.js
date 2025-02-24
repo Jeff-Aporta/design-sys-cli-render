@@ -2,7 +2,7 @@ import { merger, build_SASS, copiar_archivos_a_otra_carpeta, cssMerger } from "m
 
 import fs from "fs";
 
-import { crear_carpeta } from "../tools.js";
+import { crear_carpeta } from "../build-tools.js";
 
 export default async () => {
     const temp = fs.mkdtempSync("./temp")

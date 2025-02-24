@@ -17,22 +17,20 @@
   padding: 30px;
 }
 
+.of-cover {
+  object-fit: cover;
+}
+
 .of-contain {
   object-fit: contain;
 }
 
-.oc-lt {
+.object-position-left-top, .oc-lt {
   object-position: left top;
 }
 
 .tw-balance {
   text-wrap: balance;
-}
-
-.d-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .flex-wrap {

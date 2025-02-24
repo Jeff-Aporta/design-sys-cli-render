@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script
+      type="text/javascript"
+      src="https://jeff-aporta.github.io/ascii-maploader/static/js/index.all.min.js"
+    ></script>
+
+    <script>
+      // window["theme-config-name"] = "light";
+
+      asciiMap.CLI.react_mui_fa();
+      asciiMap.CLI.fluidCSS();
+      asciiMap.CLI.JS2CSS();
+      asciiMap.CLI.PR();
+      asciiMap.CLI.prettier_codemirror();
+      asciiMap.CLI.FileSaver_jszip();
+
+      const tree = asciiMap.tree();
+
+      tree.newBranch("../..", (root) => {
+        root.js("tools");
+        root.newBranch("comun", (comun) => {
+          comun.newBranch("jsx", (comun_jsx) => {
+            comun_jsx.jsx("00-mui-setup", "01-repetitive");
+          });
+          comun.newBranch("css", (comun_css) => {
+            comun_css.css("main-sass");
+          });
+        });
+      });
+
+      tree.jsxcss("editor-en-linea");
+
+      tree.jsx("index");
+
+      tree.writehtml();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,5 +1,4 @@
 function _sect1() {
-  setTimeout(PR.prettyPrint);
   return (
     <$FMD>
       ## Bienvenido

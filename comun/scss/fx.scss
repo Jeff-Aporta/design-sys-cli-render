@@ -19,6 +19,12 @@
   }
 }
 
+.filtered{
+  --brightness: 1;
+  --blur: 0;
+  filter: brightness(var(--brightness)) blur(var(--blur));
+}
+
 .soft-light{
   mix-blend-mode: soft-light;
 }

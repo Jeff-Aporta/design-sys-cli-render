@@ -3,29 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sistema de diseños estáticos</title>
-    <script src="https://jeff-aporta.github.io/ascii-maploader/static/js/index.all.min.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://jeff-aporta.github.io/ascii-maploader/static/js/index.all.min.js"
+    ></script>
+
     <script>
+      // window["theme-config-name"] = "light";
+
       asciiMap.CLI.react_mui_fa();
       asciiMap.CLI.fluidCSS();
       asciiMap.CLI.JS2CSS();
+      asciiMap.CLI.prettier_codemirror();
+      asciiMap.CLI.FileSaver_jszip();
+
       const tree = asciiMap.tree();
 
-      tree.newBranch("comun", (comun) => {
+      tree.newBranch("../../comun", (comun) => {
         comun.newBranch("jsx", (comun_jsx) => {
           comun_jsx.jsx("00-mui-setup");
         });
         comun.newBranch("css", (comun_css) => {
-          comun_css.css("main-sass", "diseño-capas");
+          comun_css.css("main-sass");
         });
       });
 
-      tree.jsxcss("index");
+      tree.jsxcss("editor-en-linea");
+
+      tree.jsx("tester");
 
       tree.writehtml();
     </script>
   </head>
-
   <body>
     <div id="root"></div>
   </body>

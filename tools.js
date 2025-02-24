@@ -1,11 +1,12 @@
-import fs from "fs";
+function loadStringsSync(url) {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", url, false);
+  xhr.send(null);
 
-export {
-    crear_carpeta_temp as crear_carpeta,
-}
-
-function crear_carpeta_temp(path) {
-    if (!fs.existsSync(path)) {
-        fs.mkdirSync(path);
-    }
+  if (xhr.status === 200) {
+    return xhr.responseText;
+  } else {
+    console.log(xhr);
+    console.error("Error al cargar el archivo:", xhr.status);
+  }
 }

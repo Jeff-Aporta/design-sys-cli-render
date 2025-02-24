@@ -2,6 +2,15 @@
 @use "./fx" as *;
 @use "./colors" as *;
 
+body, html{
+  margin: 0;
+  padding: 0;
+}
+
+*{
+  text-wrap: balance;
+}
+
 @each $value in (flex, none, block, inline-block) {
   .d-#{$value} {
     display: $value;
@@ -11,6 +20,12 @@
 .d-flex-column {
   display: flex;
   flex-direction: column;
+}
+
+.d-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .flex-1 {
@@ -25,14 +40,24 @@
 
 @each $abrev,
   $value
-    in (start: start, end: end, c: center, sb: space-between, se: space-evenly)
+    in (
+      start: start,
+      end: end,
+      center: center,
+      c: center,
+      space-between: space-between,
+      sb: space-between,
+      se: space-evenly
+    )
 {
   .jc-#{$abrev} {
     justify-content: $value;
   }
 }
 
-@each $abrev, $value in (c: center, s: start, e: end) {
+@each $abrev,
+  $value in (c: center, center: center, s: start, e: end, stretch: stretch)
+{
   .ai-#{$abrev} {
     align-items: $value;
   }
@@ -104,6 +129,9 @@
   .min-h-#{$i * 10}vh {
     min-height: #{$i * 10}vh;
   }
+  .min-h-#{$i * 50}px {
+    min-height: #{$i * 10}vh;
+  }
   .min-w-#{$i * 50}px {
     min-width: #{$i * 50}px;
   }
@@ -117,9 +145,19 @@
   height: min(100vw, 100vh);
 }
 
-@for $i from 11 through 50 {
-  .fs-#{$i * 2}px {
-    font-size: #{$i * 2}px;
+.fullWidth {
+  width: 100%;
+}
+
+@for $i from 1 through 10 {
+  .fs-#{$i * 2 + 8}px {
+    font-size: $i * 2px + 8px;
+  }
+  .fs-#{$i * 10}p {
+    font-size: $i * 10%;
+  }
+  .fs-#{$i * 10 + 100}p {
+    font-size: $i * 10% + 100%;
   }
 }
 
@@ -155,7 +193,11 @@
   overflow-y: scroll;
 }
 
-.sz-1px{
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.sz-1px {
   width: 1px;
   height: 1px;
 }

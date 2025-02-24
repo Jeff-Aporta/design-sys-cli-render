@@ -1,0 +1,80 @@
+.codemirror-instance {
+  position: relative;
+  border: 1px solid #224;
+
+  &.light {
+    .CodeMirror {
+      font-weight: bolder;
+      filter: invert() hue-rotate(180deg) saturate(2) brightness(1.2);
+    }
+    #botones-control {
+      * {
+        border-color: white;
+        color: white;
+        filter: brightness(2) saturate(0.8);
+      }
+    }
+  }
+
+  &.estilo-fila-mini {
+    overflow: hidden;
+  }
+
+  iframe {
+    border: 1px solid #224;
+    width: 100%;
+    height: 100%;
+  }
+
+  .boton.ejecutar {
+    display: flex;
+    right: 10px;
+    top: 10px;
+    background-color: darkblue;
+    border: 4px solid black;
+    box-sizing: content-box;
+    width: 40px;
+    aspect-ratio: 1;
+    z-index: 1;
+  }
+
+  .editor-container {
+    position: relative;
+    height: 400px;
+
+    .CodeMirror-scroll {
+      overflow: hidden !important;
+    }
+
+    .CodeMirror:focus-within .CodeMirror-scroll {
+      overflow: auto !important;
+    }
+  }
+
+  .CodeMirror {
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    width: 98%;
+    height: 95%;
+    border: 2px solid slategray;
+    font-size: 14px;
+    border-radius: 5px;
+  }
+
+  #botones-control {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    scale: 0.7;
+  }
+  .MuiBox-root {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+

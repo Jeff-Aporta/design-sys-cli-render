@@ -34,9 +34,15 @@ function $PR(props) {
       }
       return str;
     } catch (error) {
-      return "Error not found " + src;
+      console.error(error);
+      return "Error not found: " + src;
     }
   })();
+  setTimeout(() => {
+    try {
+      PR.prettyPrint();
+    } catch (error) {}
+  });
   return (
     <$CardCopy {...p}>
       <pre className="prettyprint">

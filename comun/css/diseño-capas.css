@@ -1,0 +1,27 @@
+.diseño {
+  position: relative;
+  .capa {
+    --x: 0;
+    --y: 0;
+    --tx: 0;
+    --ty: 0;
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    transform: translate(var(--tx), var(--ty));
+    &.centralizar {
+      --tx: -50%;
+      --ty: -50%;
+    }
+    &.centrar{
+        --x: 50%;
+        --y: 50%;
+        --tx: -50%;
+        --ty: -50%;
+    }
+    &.centrar-y{
+        --y: 50%;
+        --ty: -50%;
+    }
+  }
+}

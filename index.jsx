@@ -1,19 +1,76 @@
-console.log("aaaaaaa")
-
 function App() {
   return (
-    <_$Bienvenido name_app="ASCII Map Loader" img_url="https://cdn.freebiesupply.com/logos/large/2x/php-1-logo-png-transparent.png">
-      Es un lenguaje interpretado que permite cargar dependencias de archivos
-      `.jsx`, `.js` y `.css`. Se destaca por estar diseñado para inyectar estos
-      elementos en tiempo real al cargar un documento HTML mediante el uso de la
-      función `document.write()`.
-      <$$h />
-      Perfecto para cuando estás haciendo desarrollos de multiples módulos en un
-      proyecto, personalmente lo uso para comprobar que los archivos `.mjs` sean
-      compatibles en las dependencias de páginas estáticas o que deban ser
-      usadas necesariamente en el cliente.
-    </_$Bienvenido>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <div className="contenido-principal">
+        <Typography variant="h2" className="titulo-principal">
+          <b>Bienvenido</b> al sistema de diseños para sitios estáticos de{" "}
+          <b className="c-skyblue">Jeff Aporta</b>
+        </Typography>
+        <hr />
+        <div className="contenedor-temas mh-30px">
+          <CartaTema
+            titulo="DocuDesign"
+            imagen="src/img/DocuDesign-prev_1000x471.png"
+            descripcion="Documenta de forma atractiva"
+            href="DocuDesign"
+          />
+          <CartaTema
+            titulo="Playground"
+            imagen="src/img/Playground-prev_1000x273.png"
+            descripcion="Ejecución de código desde el navegador"
+            href="componentes/playground"
+          />
+        </div>
+      </div>
+    </ThemeProvider>
   );
+
+  function CartaTema({
+    titulo,
+    imagen,
+    descripcion,
+    href,
+    texto_boton = "Quiero aprender",
+  }) {
+    return (
+      <Card className="tema d-block">
+        <div className="diseño min-h-100px overflow-hidden">
+          <img
+            className="absolute-expand of-cover filtered"
+            style={{ "--blur": "2px" }}
+            src={imagen}
+          />
+          <img className="absolute-expand of-contain" src={imagen} />
+          <div className="capa sombra"></div>
+          <div className="capa centrar pad-30px"></div>
+        </div>
+        <hr />
+        <div className="card-body m-10px">
+          <CardContent>
+            <Typography variant="h3">{titulo}</Typography>
+            <br />
+            <Typography variant="body2" color="textSecondary">
+              {descripcion}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button
+              size="large"
+              variant="contained"
+              href={href}
+              fullWidth
+            >
+              <div className="d-flex jc-space-between ai-center fullWidth fs-140p">
+                <span>{texto_boton}</span>
+                <i className="fa-solid fa-graduation-cap"></i>
+              </div>
+            </Button>
+          </CardActions>
+        </div>
+      </Card>
+    );
+  }
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
