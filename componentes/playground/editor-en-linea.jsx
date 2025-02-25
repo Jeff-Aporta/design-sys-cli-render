@@ -58,6 +58,9 @@ function Editor_en_linea(props) {
         <div class='body'>
           <img 
             src="https://jeff-aporta.github.io/design-sys-cli-render/componentes/playground/basic-console.svg"
+            width="50%"
+            height="50%"
+            style="object-fit: contain;opacity: 0.5;"
           />
         </div>
       `;
