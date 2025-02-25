@@ -8,7 +8,7 @@ function Editor_en_linea(props) {
     HTML,
     files = {},
     index = -1,
-
+    src_HTML,
     plantilla_HTML,
     nombre_proyecto,
 
@@ -20,7 +20,8 @@ function Editor_en_linea(props) {
     ocultar_pestaña_CSS = false,
     ocultar_pestaña_HTML = false,
   } = props;
-  if (!plantilla_HTML) {
+
+  if (!plantilla_HTML && !src_HTML) {
     return <div>No hay plantilla HTML disponible.</div>;
   }
 
@@ -49,6 +50,10 @@ function Editor_en_linea(props) {
   const ref = React.useRef(null);
 
   React.useEffect(() => {
+    if (plantilla_HTML) {
+      const docIframe = iframe.contentDocument || iframe.contentWindow.document;
+      docIframe.body.innerHTML = plantilla_HTML;
+    }
     cargarArchivos();
 
     async function cargarArchivos() {
@@ -160,10 +165,7 @@ function Editor_en_linea(props) {
             })
             .end("d-center")}
         >
-          <iframe
-            src={`${plantilla_HTML}?iframeId=${idR.current}`}
-            id={`output`}
-          ></iframe>
+          <iframe src={`${src_HTML}`} id={`output`}></iframe>
         </Paper>
         <ConfirmarDescarga
           titulo={`Descargar ${nombre_proyecto}.zip`}
