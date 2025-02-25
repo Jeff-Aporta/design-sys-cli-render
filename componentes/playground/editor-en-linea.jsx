@@ -17,6 +17,8 @@ function Editor_en_linea(props) {
 
     playground_extra_clases = "estilo-fila-mini",
 
+    ocultar_pestañas = false,
+
     ocultar_pestaña_HTML = false,
     ocultar_pestaña_CSS = false,
     ocultar_pestaña_JS = false,
@@ -25,6 +27,28 @@ function Editor_en_linea(props) {
 
   if (!plantilla_HTML && !src_HTML) {
     return <h1 className="c-red">No hay plantilla HTML disponible.</h1>;
+  }
+
+  switch (CSS) {
+    case "#basic-console":
+      CSS = `
+        body{
+          background:linear-gradient(to right, #000000, #121236);
+          color:white;
+          font-family:sans-serif;
+
+          div.body{
+            font-size:500%;
+            padding: 40px 10px;
+          }
+      }`;
+      break;
+  }
+
+  switch (HTML) {
+    case "#basic-console":
+      HTML = "<div class='body'>😎👍</div>";
+      break;
   }
 
   const [openDialogDownload, setOpenDialogDownload] = React.useState(false);
@@ -47,6 +71,7 @@ function Editor_en_linea(props) {
   const textoCSS = React.useRef(CSS ?? "");
   const textoJS = React.useRef(JS ?? "");
   const textoJSX = React.useRef(JSX ?? "");
+  const timerWindowResize = React.useRef(Date.now());
   const idR = React.useRef(Math.random().toString(30).replace("0.", ""));
 
   const ref = React.useRef(null);
@@ -82,9 +107,12 @@ function Editor_en_linea(props) {
         textoJS.current = JS ?? _js ?? "";
         textoJSX.current = JSX ?? _jsx ?? "";
         formatearCodigo();
+        if (auto_ejecutar) {
+          ejecutarCodigo();
+        }
         return;
       }
-      setTimeout(cargarArchivos, 1000);
+      setTimeout(cargarArchivos, 200);
     }
 
     async function procesarArreglo(arr) {
@@ -121,6 +149,10 @@ function Editor_en_linea(props) {
 
     React.useEffect(() => {
       function handleResize() {
+        if (Date.now() - timerWindowResize.current < 1000) {
+          return;
+        }
+        timerWindowResize.current = Date.now();
         setWidth(window.innerWidth);
       }
       window.addEventListener("resize", handleResize);
@@ -186,7 +218,21 @@ function Editor_en_linea(props) {
   }
 
   function PestañasVerticales() {
-    const [valor, setValor] = React.useState(0);
+    const [valor, setValor] = React.useState(
+      (() => {
+        return Math.max(
+          0,
+          [
+            ocultar_pestaña_HTML,
+            ocultar_pestaña_CSS,
+            ocultar_pestaña_JS,
+            ocultar_pestaña_JSX,
+          ]
+            .map((x) => !x)
+            .indexOf(true)
+        );
+      })()
+    );
 
     const manejarCambio = (evento, nuevoValor) => {
       setValor(nuevoValor);
@@ -249,6 +295,7 @@ function Editor_en_linea(props) {
           sx={{
             borderRight: 1,
             borderColor: "divider",
+            display: ocultar_pestañas ? "none" : "block",
           }}
         >
           {
@@ -264,7 +311,7 @@ function Editor_en_linea(props) {
               {...propAccesibilidad(i++)}
             />
           }
-          {ocultar_pestaña_CSS || (
+          {
             <Tab
               style={{
                 display: ocultar_pestaña_CSS ? "none" : "block",
@@ -276,7 +323,7 @@ function Editor_en_linea(props) {
               }
               {...propAccesibilidad(i++)}
             />
-          )}
+          }
           {
             <Tab
               style={{
@@ -290,7 +337,7 @@ function Editor_en_linea(props) {
               {...propAccesibilidad(i++)}
             />
           }
-          {ocultar_pestaña_JSX || (
+          {
             <Tab
               style={{
                 display: ocultar_pestaña_JSX ? "none" : "block",
@@ -302,28 +349,56 @@ function Editor_en_linea(props) {
               }
               {...propAccesibilidad(i++)}
             />
-          )}
+          }
         </Tabs>
-        {ocultar_pestaña_HTML || (
-          <TabPanel valor={valor} index={j++} className="fullWidth">
+        {
+          <TabPanel
+            style={{
+              display: ocultar_pestaña_HTML ? "none" : "block",
+            }}
+            valor={valor}
+            index={j++}
+            className="fullWidth"
+          >
             {editor_html}
           </TabPanel>
-        )}
-        {ocultar_pestaña_CSS || (
-          <TabPanel valor={valor} index={j++} className="fullWidth">
+        }
+        {
+          <TabPanel
+            style={{
+              display: ocultar_pestaña_CSS ? "none" : "block",
+            }}
+            valor={valor}
+            index={j++}
+            className="fullWidth"
+          >
             {editor_css}
           </TabPanel>
-        )}
-        {ocultar_pestaña_JS || (
-          <TabPanel valor={valor} index={j++} className="fullWidth">
+        }
+        {
+          <TabPanel
+            style={{
+              display: ocultar_pestaña_JS ? "none" : "block",
+            }}
+            valor={valor}
+            index={j++}
+            className="fullWidth"
+          >
             {editor_js}
           </TabPanel>
-        )}
-        {ocultar_pestaña_JSX || (
-          <TabPanel valor={valor} index={j++} className="fullWidth">
+        }
+        {
+          <TabPanel
+            style={{
+              display: ocultar_pestaña_JSX ? "none" : "block",
+            }}
+            valor={valor}
+            index={j++}
+            className="fullWidth"
+          >
             {editor_jsx}
           </TabPanel>
-        )}
+        }
         <div className="d-none">
           {editor_html}
           {editor_css}
@@ -592,6 +667,14 @@ function Editor_en_linea(props) {
     }
   }
 
+  function extra_js_str() {
+    return `\n${
+      typeof extra_js === "string"
+        ? extra_js
+        : `setTimeout(${extra_js.toString()});`
+    }`;
+  }
+
   function ejecutarCodigo() {
     const iframe = refIframe.current;
     const docIframe = iframe.contentDocument || iframe.contentWindow.document;
@@ -608,7 +691,10 @@ function Editor_en_linea(props) {
       if (plantilla_HTML) {
         docIframe.open();
         docIframe.write("");
-        docIframe.write(plantilla_HTML);
+        const t = plantilla_HTML
+          .replace("// Run JS", textoJSExec())
+          .replace("// Run JSX", textoJSX.current);
+        docIframe.write(t);
         docIframe.close();
       }
       modContenedor(
@@ -621,12 +707,7 @@ function Editor_en_linea(props) {
       );
       modContenedor(
         docIframe.querySelector("#contenido-js-playground"),
-        textoJS.current +
-          `\n${
-            typeof extra_js === "string"
-              ? extra_js
-              : `(${extra_js.toString()})();`
-          }`
+        textoJSExec()
       );
       modContenedor(
         docIframe.querySelector("#contenido-jsx-playground"),
@@ -640,6 +721,29 @@ function Editor_en_linea(props) {
         contenedor.innerHTML = contenido;
       }
     }
+  }
+
+  function textoJSExec() {
+    return `
+      var user_executed = false;
+      function userexecute(){
+        if(user_executed){
+          return;
+        }
+        user_executed = true;
+        ${textoJS.current}
+        
+        ${extra_js_str()}
+      }
+      function testinit(){
+        if(!window["abrir_consola"]){
+          return setTimeout(testinit, 100);
+        }
+        userexecute();
+      }
+
+      setTimeout(testinit, 100);
+    `;
   }
 
   // Función para formatear el código usando Prettier
