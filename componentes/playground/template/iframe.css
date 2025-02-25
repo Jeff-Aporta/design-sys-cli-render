@@ -152,7 +152,8 @@ html {
 
     border-radius: 10px;
     font-weight: bolder;
-    backdrop-filter: blur(3px) brightness(0.3);
+    backdrop-filter: blur(3px) brightness(0.5);
+    border: 2px solid rgba(128, 128, 128, 0.5);
     overflow: auto;
     transition: all 0.25s;
 
