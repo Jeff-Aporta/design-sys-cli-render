@@ -1,6 +1,7 @@
 .codemirror-instance {
   position: relative;
   border: 1px solid #224;
+  overflow: hidden;
 
   &.light {
     .CodeMirror {
@@ -16,8 +17,16 @@
     }
   }
 
-  &.estilo-fila-mini {
-    overflow: hidden;
+  &.minimo-1-pestaña {
+    .contenedor-iframe {
+      height: 250px;
+    }
+    .editor-container {
+      height: 230px;
+    }
+    .tabs{
+      min-height: 250px !important;
+    }
   }
 
   iframe {
@@ -75,6 +84,8 @@
     margin: 0 !important;
     padding: 0 !important;
   }
+
+  .tabs{
+    min-height: 400px,
+  }
 }
-
-

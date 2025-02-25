@@ -15,10 +15,12 @@ function Editor_en_linea(props) {
     auto_ejecutar = true,
     extra_js = "",
 
+    playground_extra_clases = "estilo-fila-mini",
+
+    ocultar_pestaña_HTML = false,
+    ocultar_pestaña_CSS = false,
     ocultar_pestaña_JS = false,
     ocultar_pestaña_JSX = false,
-    ocultar_pestaña_CSS = false,
-    ocultar_pestaña_HTML = false,
   } = props;
 
   if (!plantilla_HTML && !src_HTML) {
@@ -52,22 +54,19 @@ function Editor_en_linea(props) {
 
   React.useEffect(() => {
     cargarPlantillaHTML();
-    cargarArchivos();
 
     function cargarPlantillaHTML() {
-      console.log(refIframe);
       if (!refIframe.current) {
         return setTimeout(cargarPlantillaHTML, 1000);
       }
       if (plantilla_HTML) {
         const iframe = refIframe.current;
-        console.log(iframe);
         const docIframe =
           iframe.contentDocument || iframe.contentWindow.document;
-        console.log(docIframe);
         docIframe.open();
         docIframe.write(plantilla_HTML);
         docIframe.close();
+        cargarArchivos();
       }
     }
 
@@ -83,9 +82,6 @@ function Editor_en_linea(props) {
         textoJS.current = JS ?? _js ?? "";
         textoJSX.current = JSX ?? _jsx ?? "";
         formatearCodigo();
-        if (auto_ejecutar) {
-          ejecutarCodigo();
-        }
         return;
       }
       setTimeout(cargarArchivos, 1000);
@@ -158,7 +154,7 @@ function Editor_en_linea(props) {
           .end(
             `
               codemirror-instance 
-              estilo-fila-mini 
+              ${playground_extra_clases} 
               ${isThemeDark ? "" : "light"}
               d-flex
               jc-center
@@ -176,9 +172,8 @@ function Editor_en_linea(props) {
             })
             .ltX(transformar_columna, {
               width: "100%",
-              minHeight: "50vh",
             })
-            .end("d-center")}
+            .end("d-center contenedor-iframe")}
         >
           <iframe ref={refIframe} src={src_HTML} id={`output`}></iframe>
         </Paper>
@@ -250,14 +245,17 @@ function Editor_en_linea(props) {
           orientation="vertical"
           value={valor}
           onChange={manejarCambio}
+          className="tabs"
           sx={{
             borderRight: 1,
             borderColor: "divider",
-            minHeight: "400px",
           }}
         >
-          {ocultar_pestaña_HTML || (
+          {
             <Tab
+              style={{
+                display: ocultar_pestaña_HTML ? "none" : "block",
+              }}
               label={
                 <BotonPestaña icon={<i class="fa-solid fa-code"></i>}>
                   HTML
@@ -265,9 +263,12 @@ function Editor_en_linea(props) {
               }
               {...propAccesibilidad(i++)}
             />
-          )}
+          }
           {ocultar_pestaña_CSS || (
             <Tab
+              style={{
+                display: ocultar_pestaña_CSS ? "none" : "block",
+              }}
               label={
                 <BotonPestaña icon={<i class="fa-brands fa-css"></i>}>
                   CSS
@@ -276,8 +277,11 @@ function Editor_en_linea(props) {
               {...propAccesibilidad(i++)}
             />
           )}
-          {ocultar_pestaña_JS || (
+          {
             <Tab
+              style={{
+                display: ocultar_pestaña_JS ? "none" : "block",
+              }}
               label={
                 <BotonPestaña icon={<i class="fa-brands fa-square-js"></i>}>
                   JS
@@ -285,9 +289,12 @@ function Editor_en_linea(props) {
               }
               {...propAccesibilidad(i++)}
             />
-          )}
+          }
           {ocultar_pestaña_JSX || (
             <Tab
+              style={{
+                display: ocultar_pestaña_JSX ? "none" : "block",
+              }}
               label={
                 <BotonPestaña icon={<i class="fa-brands fa-react"></i>}>
                   JSX
@@ -587,18 +594,22 @@ function Editor_en_linea(props) {
 
   function ejecutarCodigo() {
     const iframe = refIframe.current;
-    console.log(refIframe.current);
-    if (!plantilla_HTML) {
-      iframe.contentWindow.location.reload();
+    const docIframe = iframe.contentDocument || iframe.contentWindow.document;
+    if (!docIframe.querySelector("#contenido-html-playground")) {
+      return setTimeout(ejecutarCodigo, 100);
     }
-    iframe.onload = function () {
-      const docIframe = iframe.contentDocument || iframe.contentWindow.document;
+    if (src_HTML) {
+      iframe.contentWindow.location.reload();
+      iframe.onload = recalcular;
+    } else {
+      recalcular();
+    }
+    function recalcular() {
       if (plantilla_HTML) {
-        const iframe = refIframe.current;
-        const doc = iframe.contentDocument || iframe.contentWindow.document;
-        doc.open();
-        doc.write(plantilla_HTML);
-        doc.close();
+        docIframe.open();
+        docIframe.write("");
+        docIframe.write(plantilla_HTML);
+        docIframe.close();
       }
       modContenedor(
         docIframe.querySelector("#contenido-html-playground"),
@@ -621,17 +632,14 @@ function Editor_en_linea(props) {
         docIframe.querySelector("#contenido-jsx-playground"),
         textoJSX.current
       );
-      if (!docIframe.querySelector("#contenido-html-playground")) {
-        setTimeout(ejecutarCodigo, 100);
-      }
 
       function modContenedor(contenedor, contenido) {
-        if (!contenedor || !contenido) {
+        if (contenedor == null || contenido == null) {
           return;
         }
         contenedor.innerHTML = contenido;
       }
-    };
+    }
   }
 
   // Función para formatear el código usando Prettier
