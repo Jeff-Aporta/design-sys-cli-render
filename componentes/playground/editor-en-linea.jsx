@@ -36,18 +36,31 @@ function Editor_en_linea(props) {
           background:linear-gradient(to right, #000000, #121236);
           color:white;
           font-family:sans-serif;
-
-          div.body{
-            font-size:500%;
-            padding: 40px 10px;
-          }
-      }`;
+        }
+        
+        div.body{
+          position: fixed;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      `;
       break;
   }
 
   switch (HTML) {
     case "#basic-console":
-      HTML = "<div class='body'>😎👍</div>";
+      HTML = `
+        <div class='body'>
+          <img 
+            src="https://jeff-aporta.github.io/design-sys-cli-render/componentes/playground/basic-console.svg"
+          />
+        </div>
+      `;
       break;
   }
 
