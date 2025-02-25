@@ -22,7 +22,7 @@ function Editor_en_linea(props) {
   } = props;
 
   if (!plantilla_HTML && !src_HTML) {
-    return <div>No hay plantilla HTML disponible.</div>;
+    return <h1 className="c-red">No hay plantilla HTML disponible.</h1>;
   }
 
   const [openDialogDownload, setOpenDialogDownload] = React.useState(false);
@@ -48,13 +48,28 @@ function Editor_en_linea(props) {
   const idR = React.useRef(Math.random().toString(30).replace("0.", ""));
 
   const ref = React.useRef(null);
+  const refIframe = React.useRef(null);
 
   React.useEffect(() => {
-    if (plantilla_HTML) {
-      const docIframe = iframe.contentDocument || iframe.contentWindow.document;
-      docIframe.body.innerHTML = plantilla_HTML;
-    }
+    cargarPlantillaHTML();
     cargarArchivos();
+
+    function cargarPlantillaHTML() {
+      console.log(refIframe);
+      if (!refIframe.current) {
+        return setTimeout(cargarPlantillaHTML, 1000);
+      }
+      if (plantilla_HTML) {
+        const iframe = refIframe.current;
+        console.log(iframe);
+        const docIframe =
+          iframe.contentDocument || iframe.contentWindow.document;
+        console.log(docIframe);
+        docIframe.open();
+        docIframe.write(plantilla_HTML);
+        docIframe.close();
+      }
+    }
 
     async function cargarArchivos() {
       if (index != -1 && index <= index_code_mirror) {
@@ -165,7 +180,7 @@ function Editor_en_linea(props) {
             })
             .end("d-center")}
         >
-          <iframe src={`${src_HTML}`} id={`output`}></iframe>
+          <iframe ref={refIframe} src={src_HTML} id={`output`}></iframe>
         </Paper>
         <ConfirmarDescarga
           titulo={`Descargar ${nombre_proyecto}.zip`}
@@ -571,10 +586,20 @@ function Editor_en_linea(props) {
   }
 
   function ejecutarCodigo() {
-    const iframe = ref.current.querySelector("iframe");
-    iframe.contentWindow.location.reload();
+    const iframe = refIframe.current;
+    console.log(refIframe.current);
+    if (!plantilla_HTML) {
+      iframe.contentWindow.location.reload();
+    }
     iframe.onload = function () {
       const docIframe = iframe.contentDocument || iframe.contentWindow.document;
+      if (plantilla_HTML) {
+        const iframe = refIframe.current;
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        doc.open();
+        doc.write(plantilla_HTML);
+        doc.close();
+      }
       modContenedor(
         docIframe.querySelector("#contenido-html-playground"),
         textoHTML.current
