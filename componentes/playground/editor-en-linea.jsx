@@ -33,9 +33,9 @@ function Editor_en_linea(props) {
     case "#basic-console":
       CSS = `
         body{
-          background:linear-gradient(to right, #000000, #121236);
-          color:white;
-          font-family:sans-serif;
+          background: linear-gradient(to right, #000000, #121236);
+          color: white;
+          font-family: sans-serif;
         }
         
         div.body{
