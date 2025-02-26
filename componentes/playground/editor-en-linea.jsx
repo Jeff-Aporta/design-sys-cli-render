@@ -81,7 +81,7 @@ function Editor_en_linea(props) {
 
   let editorHTML, editorCSS, editorJS, editorJSX;
   const printWidth = 60;
-  const transformar_columna = 1100;
+  const transformar_columna = 1000;
 
   const textoHTML = React.useRef(HTML ?? "");
   const textoCSS = React.useRef(CSS ?? "");
@@ -261,8 +261,7 @@ function Editor_en_linea(props) {
 
     const classEditor = fluidCSS()
       .gtX(transformar_columna, {
-        maxWidth: "98%",
-        width: "calc(100% + 60px)",
+        width: ["calc(100% + 60px)"],
       })
       .end("editor-container");
 

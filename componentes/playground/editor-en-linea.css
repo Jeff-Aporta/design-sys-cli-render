@@ -54,6 +54,10 @@
     position: relative;
     height: 350px;
 
+    .CodeMirror {
+      width: 100%;
+    }
+
     .CodeMirror-scroll {
       overflow: hidden !important;
     }
@@ -89,6 +93,7 @@
   }
 
   .tabs {
+    overflow: visible !important;
     min-height: 400px;
   }
 }
