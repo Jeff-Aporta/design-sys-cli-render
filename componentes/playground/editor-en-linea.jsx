@@ -369,7 +369,6 @@ function Editor_en_linea(props) {
             }}
             valor={valor}
             index={j++}
-            className="fullWidth"
           >
             {editor_html}
           </TabPanel>
@@ -381,7 +380,6 @@ function Editor_en_linea(props) {
             }}
             valor={valor}
             index={j++}
-            className="fullWidth"
           >
             {editor_css}
           </TabPanel>
@@ -393,7 +391,6 @@ function Editor_en_linea(props) {
             }}
             valor={valor}
             index={j++}
-            className="fullWidth"
           >
             {editor_js}
           </TabPanel>
@@ -405,7 +402,6 @@ function Editor_en_linea(props) {
             }}
             valor={valor}
             index={j++}
-            className="fullWidth"
           >
             {editor_jsx}
           </TabPanel>
