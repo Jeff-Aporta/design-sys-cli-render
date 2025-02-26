@@ -109,6 +109,7 @@ html {
   }
 
   label {
+    font-size: 1rem;
     background: black;
     cursor: pointer;
     pointer-events: auto;

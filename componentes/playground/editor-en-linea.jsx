@@ -169,7 +169,7 @@ function Editor_en_linea(props) {
           return;
         }
         timerWindowResize.current = Date.now();
-        setWidth(window.innerWidth);
+        setTimeout(setWidth(window.innerWidth), 5000 * Math.random());
       }
       window.addEventListener("resize", handleResize);
 
@@ -259,11 +259,7 @@ function Editor_en_linea(props) {
       formatearCodigo();
     }, [valor]);
 
-    const classEditor = fluidCSS()
-      .gtX(transformar_columna, {
-        width: ["calc(100% + 60px)"],
-      })
-      .end("editor-container");
+    const classEditor = "editor-container";
 
     const editor_html = (
       <div id="editor-html" className={classEditor}>

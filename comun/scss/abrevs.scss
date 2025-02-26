@@ -5,11 +5,11 @@
 body, html{
   margin: 0;
   padding: 0;
+  & > * {
+    text-wrap: balance;
+  }
 }
 
-*{
-  text-wrap: balance;
-}
 
 @each $value in (flex, none, block, inline-block) {
   .d-#{$value} {
