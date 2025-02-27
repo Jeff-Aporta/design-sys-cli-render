@@ -3,34 +3,34 @@
     in (github: #2b3137, youtube: #ff0000, telegram: #24a1de, whatsapp: #25d366)
 {
   .bg-#{$name} {
-    background-color: $color;
+    background: $color;
   }
 }
 @each $color
   in (
-    white,
-    lightgray,
-    gray,
     black,
+    gray,
+    lightgray,
+    white,
     skyblue,
     deepskyblue,
     dodgerblue,
-    royalblue,
     steelblue,
-    purple,
+    royalblue,
     pink,
     plum,
+    khaki
+    yellow,
+    orange,
     hotpink,
     red,
     crimson,
     darkred,
-    orange,
-    yellow,
-    khaki
+    purple,
   )
 {
   .bg-#{"" + $color} {
-    background-color: $color;
+    background: $color;
   }
   .c-#{"" + $color} {
     color: $color;

@@ -1,15 +1,18 @@
-let theme;
-let isThemeDark;
+var theme;
+var isThemeDark;
+
+var themename = (() => {
+  const tema_almacenado = localStorage.getItem("theme");
+  const tema_forzado = window["force-theme-dev"];
+  const tema_sistema = window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+  return tema_forzado ?? tema_almacenado ?? tema_sistema ?? "dark";
+})();
 
 if (typeof window != "undefined" && window["MaterialUI"]) {
   Object.assign(window, window["MaterialUI"]);
 }
-
-let themename = (() => {
-  const ls = localStorage.getItem("theme");
-  const w = window["theme-config-name"];
-  return w ?? ls ?? "dark";
-})();
 
 selectThemeName(themename);
 
@@ -47,7 +50,7 @@ function selectThemeName(name) {
 
   function customizePropsMUI() {
     const typography = {
-      fontSize: 12,
+      fontSize: 14,
       button: {
         textTransform: "none",
       },

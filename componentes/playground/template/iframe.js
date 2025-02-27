@@ -37,6 +37,10 @@ function reescribirConsolas() {
   }
 }
 
+function sin_consola(){
+  document.querySelector(".toggle-console").style.display = "none";
+}
+
 function abrir_consola() {
   const toggleinput = document.getElementById("toggle-console-checkbox");
   toggleinput.checked = true;

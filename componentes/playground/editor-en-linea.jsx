@@ -117,7 +117,6 @@ function Editor_en_linea(props) {
         const _css = await procesarArreglo(files.CSS);
         const _js = await procesarArreglo(files.JS);
         const _jsx = await procesarArreglo(files.JSX);
-        index_code_mirror++;
         textoHTML.current = HTML ?? _html ?? "";
         textoCSS.current = CSS ?? _css ?? "";
         textoJS.current = JS ?? _js ?? "";
@@ -126,6 +125,9 @@ function Editor_en_linea(props) {
         if (auto_ejecutar) {
           ejecutarCodigo();
         }
+        setTimeout(() => {
+          index_code_mirror++;
+        }, 50);
         return;
       }
       setTimeout(cargarArchivos, 200);
@@ -188,6 +190,8 @@ function Editor_en_linea(props) {
       init = true;
     }, [width]);
 
+    const wp = 45;
+
     return (
       <div
         ref={ref}
@@ -210,18 +214,20 @@ function Editor_en_linea(props) {
             `
           )}
       >
-        <PestañasVerticales />
+        <PestañasVerticales
+          className={fluidCSS()
+            .ltX(transformar_columna, {
+              width: ["100%", `${100 - wp}%`],
+            })
+            .end()}
+        />
         <Paper
           elevation={6}
           className={fluidCSS()
-            .gtX(transformar_columna, {
-              width: "45%",
-              aspectRatio: "1",
-            })
             .ltX(transformar_columna, {
-              width: "100%",
+              width: ["100%", `${wp}%`],
             })
-            .end("d-center contenedor-iframe")}
+            .end("contenedor-iframe")}
         >
           <iframe ref={refIframe} src={src_HTML} id={`output`}></iframe>
         </Paper>
@@ -233,7 +239,7 @@ function Editor_en_linea(props) {
     );
   }
 
-  function PestañasVerticales() {
+  function PestañasVerticales({ className }) {
     const [valor, setValor] = React.useState(
       (() => {
         return Math.max(
@@ -290,12 +296,11 @@ function Editor_en_linea(props) {
 
     return (
       <Box
+        className={className}
         sx={{
-          flexGrow: 1,
           bgcolor: "background.paper",
           display: "flex",
           alignItems: "center",
-          position: "relative",
         }}
       >
         <Tabs
@@ -739,7 +744,6 @@ function Editor_en_linea(props) {
         }
         user_executed = true;
         ${textoJS.current}
-        
         ${extra_js_str()}
       }
       function testinit(){
