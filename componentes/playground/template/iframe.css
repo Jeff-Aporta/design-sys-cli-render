@@ -9,7 +9,6 @@ html {
 
 #contenido-html-playground {
   .presiona-ejecutar {
-    font-size: 150%;
     color: steelblue;
     display: flex;
     justify-content: center;
