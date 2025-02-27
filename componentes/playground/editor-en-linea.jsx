@@ -195,40 +195,21 @@ function Editor_en_linea(props) {
     return (
       <div
         ref={ref}
-        className={fluidCSS()
-          .gtX(transformar_columna, {
-            maxHeight: "400px",
-          })
-          .ltX(transformar_columna, {
-            flexWrap: "wrap",
-            flexDirection: "column-reverse",
-          })
-          .end(
-            `
-              codemirror-instance 
-              ${playground_extra_clases} 
-              ${isThemeDark ? "" : "light"}
-              d-flex
-              jc-center
-              ai-stretch
-            `
-          )}
+        className={`
+          codemirror-instance 
+          ${playground_extra_clases} 
+          ${isThemeDark ? "" : "light"}
+          d-flex
+          jc-center
+          ai-stretch
+        `}
+        style={{
+          flexWrap: "wrap",
+          flexDirection: "column-reverse",
+        }}
       >
-        <PestañasVerticales
-          className={fluidCSS()
-            .ltX(transformar_columna, {
-              width: ["100%", `${100 - wp}%`],
-            })
-            .end()}
-        />
-        <Paper
-          elevation={6}
-          className={fluidCSS()
-            .ltX(transformar_columna, {
-              width: ["100%", `${wp}%`],
-            })
-            .end("contenedor-iframe")}
-        >
+        <PestañasVerticales className="fullWidth" />
+        <Paper elevation={6} className="contenedor-iframe fullWidth">
           <iframe ref={refIframe} src={src_HTML} id={`output`}></iframe>
         </Paper>
         <ConfirmarDescarga
