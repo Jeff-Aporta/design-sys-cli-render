@@ -163,15 +163,15 @@ function Editor_en_linea(props) {
   return <ComponenteRetorno />;
 
   function ComponenteRetorno() {
-    const [width, setWidth] = React.useState(window.innerWidth);
+    const [windowWidth, updateWindowWidth] = React.useState(window.innerWidth);
 
     React.useEffect(() => {
       function handleResize() {
-        if (Date.now() - timerWindowResize.current < 1000) {
+        if (Date.now() - timerWindowResize.current < 1500) {
           return;
         }
         timerWindowResize.current = Date.now();
-        setTimeout(setWidth(window.innerWidth), 5000 * Math.random());
+        setTimeout(updateWindowWidth(window.innerWidth), 5000 * Math.random());
       }
       window.addEventListener("resize", handleResize);
 
@@ -188,7 +188,7 @@ function Editor_en_linea(props) {
         return;
       }
       init = true;
-    }, [width]);
+    }, [windowWidth]);
 
     const wp = 45;
 
@@ -218,253 +218,272 @@ function Editor_en_linea(props) {
         />
       </div>
     );
-  }
 
-  function PestañasVerticales({ className }) {
-    const [valor, setValor] = React.useState(
-      (() => {
-        return Math.max(
-          0,
-          [
-            ocultar_pestaña_HTML,
-            ocultar_pestaña_CSS,
-            ocultar_pestaña_JS,
-            ocultar_pestaña_JSX,
-          ]
-            .map((x) => !x)
-            .indexOf(true)
-        );
-      })()
-    );
+    function PestañasVerticales({ className }) {
+      const [valor, setValor] = React.useState(
+        (() => {
+          return Math.max(
+            0,
+            [
+              ocultar_pestaña_HTML,
+              ocultar_pestaña_CSS,
+              ocultar_pestaña_JS,
+              ocultar_pestaña_JSX,
+            ]
+              .map((x) => !x)
+              .indexOf(true)
+          );
+        })()
+      );
 
-    const manejarCambio = (evento, nuevoValor) => {
-      setValor(nuevoValor);
-    };
+      const manejarCambio = (evento, nuevoValor) => {
+        setValor(nuevoValor);
+      };
 
-    React.useLayoutEffect(() => {
-      crearEditores();
-      formatearCodigo();
-    }, [valor]);
+      React.useLayoutEffect(() => {
+        crearEditores();
+        formatearCodigo();
+      }, [valor]);
 
-    const classEditor = "editor-container";
+      const classEditor = "editor-container";
 
-    const editor_html = (
-      <div id="editor-html" className={classEditor}>
-        <textarea id={`html-code`}>{textoHTML.current}</textarea>
-      </div>
-    );
+      const editor_html = (
+        <div id="editor-html" className={classEditor}>
+          <textarea id={`html-code`}>{textoHTML.current}</textarea>
+        </div>
+      );
 
-    const editor_css = (
-      <div id="editor-css" className={classEditor}>
-        <textarea id={`css-code`}>{textoCSS.current}</textarea>
-      </div>
-    );
+      const editor_css = (
+        <div id="editor-css" className={classEditor}>
+          <textarea id={`css-code`}>{textoCSS.current}</textarea>
+        </div>
+      );
 
-    const editor_js = (
-      <div id="editor-js" className={classEditor}>
-        <textarea id={`js-code`}>{textoJS.current}</textarea>
-      </div>
-    );
+      const editor_js = (
+        <div id="editor-js" className={classEditor}>
+          <textarea id={`js-code`}>{textoJS.current}</textarea>
+        </div>
+      );
 
-    const editor_jsx = (
-      <div id="editor-jsx" className={classEditor}>
-        <textarea id={`jsx-code`}>{textoJSX.current}</textarea>
-      </div>
-    );
+      const editor_jsx = (
+        <div id="editor-jsx" className={classEditor}>
+          <textarea id={`jsx-code`}>{textoJSX.current}</textarea>
+        </div>
+      );
 
-    let i = 0;
-    let j = 0;
+      let i = 0;
+      let j = 0;
 
-    return (
-      <Box
-        className={className}
-        sx={{
-          bgcolor: "background.paper",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Tabs
-          orientation="vertical"
-          value={valor}
-          onChange={manejarCambio}
-          className="tabs"
+      const brk_prestañas = 850;
+
+      return (
+        <Box
+          className={className}
           sx={{
-            borderRight: 1,
-            borderColor: "divider",
-            display: ocultar_pestañas ? "none" : "block",
+            bgcolor: "background.paper",
+            display: "flex",
+            ...(() => {
+              const retorno = {};
+              if (windowWidth < brk_prestañas) {
+                retorno.flexDirection = "column";
+              }
+              return retorno;
+            })(),
           }}
         >
+          <Tabs
+            orientation={
+              windowWidth < brk_prestañas ? "horizontal" : "vertical"
+            }
+            value={valor}
+            onChange={manejarCambio}
+            className="tabs"
+            sx={{
+              borderRight: 1,
+              borderColor: "divider",
+              ...(() => {
+                const retorno = {};
+                if (ocultar_pestañas) {
+                  retorno.display = "none";
+                }
+                if (windowWidth > brk_prestañas) {
+                  retorno.width = "100px";
+                }
+                return retorno;
+              })(),
+            }}
+          >
+            {
+              <Tab
+                style={{
+                  display: ocultar_pestaña_HTML ? "none" : "block",
+                }}
+                label={
+                  <BotonPestaña icon={<i class="fa-solid fa-code"></i>}>
+                    HTML
+                  </BotonPestaña>
+                }
+                {...propAccesibilidad(i++)}
+              />
+            }
+            {
+              <Tab
+                style={{
+                  display: ocultar_pestaña_CSS ? "none" : "block",
+                }}
+                label={
+                  <BotonPestaña icon={<i class="fa-brands fa-css"></i>}>
+                    CSS
+                  </BotonPestaña>
+                }
+                {...propAccesibilidad(i++)}
+              />
+            }
+            {
+              <Tab
+                style={{
+                  display: ocultar_pestaña_JS ? "none" : "block",
+                }}
+                label={
+                  <BotonPestaña icon={<i class="fa-brands fa-square-js"></i>}>
+                    JS
+                  </BotonPestaña>
+                }
+                {...propAccesibilidad(i++)}
+              />
+            }
+            {
+              <Tab
+                style={{
+                  display: ocultar_pestaña_JSX ? "none" : "block",
+                }}
+                label={
+                  <BotonPestaña icon={<i class="fa-brands fa-react"></i>}>
+                    JSX
+                  </BotonPestaña>
+                }
+                {...propAccesibilidad(i++)}
+              />
+            }
+          </Tabs>
           {
-            <Tab
+            <TabPanel
               style={{
                 display: ocultar_pestaña_HTML ? "none" : "block",
               }}
-              label={
-                <BotonPestaña icon={<i class="fa-solid fa-code"></i>}>
-                  HTML
-                </BotonPestaña>
-              }
-              {...propAccesibilidad(i++)}
-            />
+              valor={valor}
+              index={j++}
+            >
+              {editor_html}
+            </TabPanel>
           }
           {
-            <Tab
+            <TabPanel
               style={{
                 display: ocultar_pestaña_CSS ? "none" : "block",
               }}
-              label={
-                <BotonPestaña icon={<i class="fa-brands fa-css"></i>}>
-                  CSS
-                </BotonPestaña>
-              }
-              {...propAccesibilidad(i++)}
-            />
+              valor={valor}
+              index={j++}
+            >
+              {editor_css}
+            </TabPanel>
           }
           {
-            <Tab
+            <TabPanel
               style={{
                 display: ocultar_pestaña_JS ? "none" : "block",
               }}
-              label={
-                <BotonPestaña icon={<i class="fa-brands fa-square-js"></i>}>
-                  JS
-                </BotonPestaña>
-              }
-              {...propAccesibilidad(i++)}
-            />
+              valor={valor}
+              index={j++}
+            >
+              {editor_js}
+            </TabPanel>
           }
           {
-            <Tab
+            <TabPanel
               style={{
                 display: ocultar_pestaña_JSX ? "none" : "block",
               }}
-              label={
-                <BotonPestaña icon={<i class="fa-brands fa-react"></i>}>
-                  JSX
-                </BotonPestaña>
-              }
-              {...propAccesibilidad(i++)}
-            />
+              valor={valor}
+              index={j++}
+            >
+              {editor_jsx}
+            </TabPanel>
           }
-        </Tabs>
-        {
-          <TabPanel
-            style={{
-              display: ocultar_pestaña_HTML ? "none" : "block",
-            }}
-            valor={valor}
-            index={j++}
-          >
+          <div className="d-none">
             {editor_html}
-          </TabPanel>
-        }
-        {
-          <TabPanel
-            style={{
-              display: ocultar_pestaña_CSS ? "none" : "block",
-            }}
-            valor={valor}
-            index={j++}
-          >
             {editor_css}
-          </TabPanel>
-        }
-        {
-          <TabPanel
-            style={{
-              display: ocultar_pestaña_JS ? "none" : "block",
-            }}
-            valor={valor}
-            index={j++}
-          >
             {editor_js}
-          </TabPanel>
-        }
-        {
-          <TabPanel
-            style={{
-              display: ocultar_pestaña_JSX ? "none" : "block",
-            }}
-            valor={valor}
-            index={j++}
-          >
             {editor_jsx}
-          </TabPanel>
-        }
-        <div className="d-none">
-          {editor_html}
-          {editor_css}
-          {editor_js}
-          {editor_jsx}
-        </div>
-        <div id="botones-control">
-          <Tooltip title="Ejecutar código" placement="right">
-            <IconButton
-              variant="contained"
-              color="contrast"
-              onClick={ejecutarCodigo}
-              className="boton ejecutar codigo"
-            >
-              <i className="fa fa-play" />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Descargar" placement="right">
-            <IconButton
-              variant="contained"
-              color="contrast"
-              onClick={abrirAlertaDescarga}
-              className="boton ejecutar descarga"
-            >
-              <i className="fa fa-download" />
-            </IconButton>
-          </Tooltip>
-        </div>
-      </Box>
-    );
-
-    function BotonPestaña({ icon, children }) {
-      return (
-        <big
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            gap: "10px",
-            width: "100%",
-            paddingRight: "10px",
-          }}
-        >
-          {icon}
-          <b>{children}</b>
-        </big>
+          </div>
+          <div id="botones-control">
+            <Tooltip title="Ejecutar código" placement="right">
+              <IconButton
+                variant="contained"
+                color="contrast"
+                onClick={ejecutarCodigo}
+                className="boton ejecutar codigo"
+              >
+                <i className="fa fa-play" />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Descargar" placement="right">
+              <IconButton
+                variant="contained"
+                color="contrast"
+                onClick={abrirAlertaDescarga}
+                className="boton ejecutar descarga"
+              >
+                <i className="fa fa-download" />
+              </IconButton>
+            </Tooltip>
+          </div>
+        </Box>
       );
-    }
 
-    function TabPanel(props) {
-      const { children, valor, index, ...otros } = props;
+      function BotonPestaña({ icon, children }) {
+        return (
+          <big
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              gap: "10px",
+              width: "100%",
+              paddingRight: "10px",
+            }}
+          >
+            {icon}
+            <b>{children}</b>
+          </big>
+        );
+      }
 
-      return (
-        <div
-          role="tabpanel"
-          hidden={valor !== index}
-          id={`vertical-tabpanel-${index}`}
-          aria-labelledby={`vertical-tab-${index}`}
-          {...otros}
-        >
-          {valor === index && (
-            <Box sx={{ p: 3 }}>
-              <Typography>{children}</Typography>
-            </Box>
-          )}
-        </div>
-      );
-    }
+      function TabPanel(props) {
+        const { children, valor, index, ...otros } = props;
 
-    function propAccesibilidad(index) {
-      return {
-        id: `vertical-tab-${index}`,
-        "aria-controls": `vertical-tabpanel-${index}`,
-      };
+        return (
+          <div
+            role="tabpanel"
+            hidden={valor !== index}
+            id={`vertical-tabpanel-${index}`}
+            aria-labelledby={`vertical-tab-${index}`}
+            {...otros}
+          >
+            {valor === index && (
+              <Box sx={{ p: 3 }}>
+                <Typography>{children}</Typography>
+              </Box>
+            )}
+          </div>
+        );
+      }
+
+      function propAccesibilidad(index) {
+        return {
+          id: `vertical-tab-${index}`,
+          "aria-controls": `vertical-tabpanel-${index}`,
+        };
+      }
     }
   }
 

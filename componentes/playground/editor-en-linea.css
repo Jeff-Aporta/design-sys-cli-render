@@ -2,6 +2,8 @@
   position: relative;
   border: 1px solid #224;
 
+  overflow: auto;
+
   &.light {
     .CodeMirror {
       font-weight: bolder;
@@ -65,12 +67,17 @@
 
   .CodeMirror {
     left: 10px;
-    min-width: 300px;
-    max-width: 100%;
     width: 100%;
     height: 100%;
-    font-size: 16px;
     border-radius: 5px;
+    font-size: 16px;
+
+    &:not(:focus-within) {
+      --m: 50vw;
+      min-width: min(300px, var(--m));
+      max-width: var(--m);
+      filter: brightness(0.4);
+    }
   }
 
   #botones-control {
@@ -90,7 +97,5 @@
 
   .tabs {
     overflow: visible !important;
-    min-height: 400px;
-    width: 100px;
   }
 }
