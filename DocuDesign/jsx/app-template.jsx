@@ -226,6 +226,8 @@ function App() {
     }
   });
 
+  setTimeout(fluidCSS().actualizarStyle);
+
   return (
     <Main>
       <HeaderMenu />
