@@ -11,4 +11,6 @@ function App() {
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
-setTimeout(fluidCSS().actualizarStyle);
+for (let i = 0; i < 3; i++) {
+  setTimeout(fluidCSS().actualizarStyle, i * 50);
+}
