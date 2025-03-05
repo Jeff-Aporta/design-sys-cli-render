@@ -226,17 +226,13 @@ function App() {
     }
   });
 
-  setTimeout(fluidCSS().actualizarStyle);
+  React.useLayoutEffect(() => setTimeout(fluidCSS().actualizarStyle), []);
 
   return (
     <Main>
       <HeaderMenu />
       <CursorEffect mix="soft-light" opacity="0.3" />
-      <CursorEffect
-        mix="soft-light"
-        opacity="0.1"
-        zIndex={zIndexCursorLight}
-      />
+      <CursorEffect mix="soft-light" opacity="0.1" zIndex={zIndexCursorLight} />
       <div className="app-content">
         <SideleftMenuResponsive />
         <SideleftMenu />
