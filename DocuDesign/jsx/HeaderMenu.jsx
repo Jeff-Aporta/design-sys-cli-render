@@ -131,7 +131,6 @@ function IconSocialTop({ lbl, url, _icon, black = false, color, brk = 700 }) {
   );
   const alw = "d-center gap-10px c-skyblue bright-hover-1-5";
   const cls = fluidCSS().ltX(brk, { display: "none" }).end(alw);
-  console.log(cls)
   const full = (
     <span className={cls}>
       {icon}
