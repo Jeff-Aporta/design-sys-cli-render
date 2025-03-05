@@ -1,4 +1,5 @@
 let index_code_mirror = 0;
+let indexes_code_mirror = [];
 
 function Editor_en_linea(props) {
   let {
@@ -94,25 +95,43 @@ function Editor_en_linea(props) {
   const refIframe = React.useRef(null);
 
   React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          estadosObservados.set(entry.target, entry.isIntersecting);
+        });
+      },
+      {
+        root: null, // viewport como contenedor
+        rootMargin: "0px",
+        threshold: 0.1, // % de visibilidad necesario para considerarlo "intersectado"
+      }
+    );
+
+    const estadosObservados = new Map();
+
     cargarPlantillaHTML();
+
+    function observarElemento(elemento) {
+      observer.observe(elemento);
+    }
 
     function cargarPlantillaHTML() {
       if (!refIframe.current) {
         return setTimeout(cargarPlantillaHTML, 1000);
       }
       if (plantilla_HTML) {
-        const iframe = refIframe.current;
-        const docIframe =
-          iframe.contentDocument || iframe.contentWindow.document;
-        docIframe.open();
-        docIframe.write(plantilla_HTML);
-        docIframe.close();
+        observarElemento(ref.current);
         cargarArchivos();
       }
     }
 
     async function cargarArchivos() {
-      if (index != -1 && index <= index_code_mirror) {
+      // const cargar_en_cola = index != -1 && index <= index_code_mirror;
+      if (
+        !indexes_code_mirror.includes(index) &&
+        estaIntersectado(ref.current)
+      ) {
         const _html = await procesarArreglo(files.HTML);
         const _css = await procesarArreglo(files.CSS);
         const _js = await procesarArreglo(files.JS);
@@ -122,15 +141,28 @@ function Editor_en_linea(props) {
         textoJS.current = JS ?? _js ?? "";
         textoJSX.current = JSX ?? _jsx ?? "";
         formatearCodigo();
-        if (auto_ejecutar) {
-          ejecutarCodigo();
+        { // Avisar al html que empiece la página de prev
+          const iframe = refIframe.current;
+          const docIframe =
+            iframe.contentDocument || iframe.contentWindow.document;
+          docIframe.open();
+          docIframe.write(plantilla_HTML);
+          docIframe.close();
+          if (auto_ejecutar) {
+            ejecutarCodigo();
+          }
         }
+        indexes_code_mirror.push(index);
         setTimeout(() => {
           index_code_mirror++;
         }, 50);
         return;
       }
-      setTimeout(cargarArchivos, 200);
+      setTimeout(cargarArchivos, 500);
+
+      function estaIntersectado(elemento) {
+        return !!estadosObservados.get(elemento);
+      }
     }
 
     async function procesarArreglo(arr) {
@@ -181,7 +213,7 @@ function Editor_en_linea(props) {
     React.useLayoutEffect(() => {
       formatearCodigo();
       if (auto_ejecutar) {
-        ejecutarCodigo();
+        // ejecutarCodigo();
       }
       if (init) {
         crearEditores();

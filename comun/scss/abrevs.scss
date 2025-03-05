@@ -56,7 +56,7 @@ html {
   }
 }
 
-.fw-wrap{
+.fw-wrap {
   flex-wrap: wrap;
 }
 
@@ -75,74 +75,106 @@ html {
   }
 }
 
-@for $i from 1 through 10 {
-  .gap-#{$i * 10}px {
+@for $i from 1 through 20 {
+  $val: 5 * $i;
+  $valpx: $val + px;
+
+  .gap-#{$val}px {
     @extend .d-flex;
-    gap: $i * 10px;
+    gap: $valpx;
   }
-  .pad-#{$i * 10}px {
-    padding: $i * 10px;
+
+  .pad-#{$val}px {
+    padding: $valpx;
   }
-  .padh-#{$i * 10}px {
-    padding-top: $i * 10px;
-    padding-bottom: $i * 10px;
+
+  .padh-#{$val}px {
+    padding-top: $valpx;
+    padding-bottom: $valpx;
   }
-  .padw-#{$i * 10}px {
-    padding-right: $i * 10px;
-    padding-left: $i * 10px;
+
+  .padw-#{$val}px {
+    padding-left: $valpx;
+    padding-right: $valpx;
   }
-  .padt-#{$i * 10}px {
-    padding-top: $i * 10px;
+
+  .padt-#{$val}px {
+    padding-top: $valpx;
   }
-  .padr-#{$i * 10}px {
-    padding-right: $i * 10px;
+
+  .padr-#{$val}px {
+    padding-right: $valpx;
   }
-  .padb-#{$i * 10}px {
-    padding-bottom: $i * 10px;
+
+  .padb-#{$val}px {
+    padding-bottom: $valpx;
   }
-  .padl-#{$i * 10}px {
-    padding-left: $i * 10px;
+
+  .padl-#{$val}px {
+    padding-left: $valpx;
   }
-  .m-#{$i * 10}px {
-    margin: $i * 10px;
+
+  .m-#{$val}px {
+    margin: $valpx;
   }
-  .mh-#{$i * 10}px {
-    margin-top: $i * 10px;
-    margin-bottom: $i * 10px;
+
+  .mh-#{$val}px {
+    margin-top: $valpx;
+    margin-bottom: $valpx;
   }
-  .mw-#{$i * 10}px {
-    margin-right: $i * 10px;
-    margin-left: $i * 10px;
+
+  .mw-#{$val}px {
+    margin-left: $valpx;
+    margin-right: $valpx;
   }
-  .mt-#{$i * 10}px {
-    margin-top: $i * 10px;
+
+  .mt-#{$val}px {
+    margin-top: $valpx;
   }
-  .mr-#{$i * 10}px {
-    margin-right: $i * 10px;
+
+  .mr-#{$val}px {
+    margin-right: $valpx;
   }
-  .mb-#{$i * 10}px {
-    margin-bottom: $i * 10px;
+
+  .mb-#{$val}px {
+    margin-bottom: $valpx;
   }
-  .ml-#{$i * 10}px {
-    margin-left: $i * 10px;
+
+  .ml-#{$val}px {
+    margin-left: $valpx;
   }
 }
 
 @for $i from 1 through 12 {
-  .h-#{$i * 10}vh {
-    height: #{$i * 10}vh;
+  $vhVal: $i * 10; // 10, 20, 30, ..., 120
+  $pxVal: $i * 50; // 50, 100, 150, ..., 600
+
+  // Clases que usan vh y vw
+  .h-#{$vhVal}vh {
+    height: #{$vhVal}dvh;
   }
-  .min-h-#{$i * 10}vh {
-    min-height: #{$i * 10}vh;
+  .min-h-#{$vhVal}vh {
+    min-height: #{$vhVal}dvh;
   }
-  .min-h-#{$i * 50}px {
-    min-height: #{$i * 10}vh;
+  .w-#{$vhVal}vw {
+    width: #{$vhVal}dvw;
   }
-  .min-w-#{$i * 50}px {
-    min-width: #{$i * 50}px;
+  .min-w-#{$vhVal}vw {
+    min-width: #{$vhVal}dvw;
   }
-  .max-w-#{$i * 50}px {
-    max-width: #{$i * 50}px;
+
+  // Clases que usan px
+  .min-h-#{$pxVal}px {
+    min-height: #{$pxVal}px;
+  }
+  .max-h-#{$pxVal}px {
+    max-height: #{$pxVal}px;
+  }
+  .min-w-#{$pxVal}px {
+    min-width: #{$pxVal}px;
+  }
+  .max-w-#{$pxVal}px {
+    max-width: #{$pxVal}px;
   }
 }
 
@@ -155,43 +187,66 @@ html {
   width: 100%;
 }
 
+// ---------------------------------------------
+// 1. Tipografía
+// ---------------------------------------------
 @for $i from 1 through 10 {
-  .fs-#{$i * 2 + 8}px {
-    font-size: $i * 2px + 8px;
+  // Variables para tamaños de fuente
+  $fontSizePx:   ($i * 2) + 8;     // Genera: 10px, 12px, 14px, ... 26px
+  $fontSizePct1: $i * 10;          // Genera: 10, 20, 30, ... 100 (porcentaje)
+  $fontSizePct2: ($i * 10) + 100;  // Genera: 110, 120, 130, ... 200 (porcentaje)
+
+  .fs-#{$fontSizePx}-px {
+    font-size: $fontSizePx * 1px;
   }
-  .fs-#{$i * 10}p {
-    font-size: $i * 10%;
+
+  .fs-#{$fontSizePct1}-pct {
+    font-size: $fontSizePct1 * 1%;
   }
-  .fs-#{$i * 10 + 100}p {
-    font-size: $i * 10% + 100%;
+
+  .fs-#{$fontSizePct2}-pct {
+    font-size: $fontSizePct2 * 1%;
   }
 }
 
+// ---------------------------------------------
+// 2. Layout (anchuras, z-index, opacidad, bordes y posicionamiento)
+// ---------------------------------------------
 @for $i from 1 through 10 {
-  .w-#{$i * 10}p {
-    width: $i * 10%;
+  // Variables para layout
+  $widthPct:   $i * 10  * 1%;   // Genera: 10, 20, 30, ... 100 (%)
+  $widthVw:    $i * 10 * 1vw;   // Genera: 10, 20, 30, ... 100 (vw)
+  $zVal:       $i;        // Genera: 1, 2, 3, ... 10 (z-index)
+  $opacityVal: $i * 10;   // Genera: 10, 20, 30, ... 100 (valor de opacidad en %)
+  $opacity:    $opacityVal / 100;  // Convierte a: 0.1, 0.2, ... 1.0
+  $borderVal:  $i * 5 * 1px;    // Genera: 5, 10, 15, ... 50 (px)
+
+  .w-#{$widthPct}-pct {
+    width: $widthPct;
   }
 
-  .w-#{$i * 10}vw {
-    width: $i * 10vw;
+  .w-#{$widthVw}-vw {
+    width: $widthVw;
   }
 
-  .z-index#{$i} {
-    z-index: $i;
+  .z-index-#{$zVal} {
+    z-index: $zVal;
   }
 
-  .op-#{$i * 10} {
-    opacity: calc(#{$i * 10} / 100);
+  .op-#{$opacityVal} {
+    opacity: $opacity;
   }
 
-  .br-#{$i * 5}px {
-    border-radius: #{$i * 5}px !important;
+  .br-#{$borderVal}-px {
+    border-radius: $borderVal !important;
   }
-  .bottom-#{$i * 5}px {
-    bottom: #{$i * 5}px;
+
+  .bottom-#{$borderVal}-px {
+    bottom: $borderVal;
   }
-  .right-#{$i * 5}px {
-    right: #{$i * 5}px;
+
+  .right-#{$borderVal}-px {
+    right: $borderVal;
   }
 }
 
