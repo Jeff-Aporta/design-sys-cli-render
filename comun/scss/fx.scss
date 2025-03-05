@@ -12,6 +12,19 @@
   }
 }
 
+.backdrop-bright-hover-2 {
+  transition: backdrop-filter 0.3s !important;
+  &:hover {
+    backdrop-filter: brightness(2);
+  }
+}
+.backdrop-bright-hover-1-5 {
+  transition: backdrop-filter 0.3s !important;
+  &:hover {
+    backdrop-filter: brightness(1.5);
+  }
+}
+
 .bright-hover-1-2 {
   transition: filter 0.3s !important;
   &:hover {

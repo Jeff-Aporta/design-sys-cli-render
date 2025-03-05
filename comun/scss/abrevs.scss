@@ -56,6 +56,10 @@ html {
   }
 }
 
+.fw-wrap{
+  flex-wrap: wrap;
+}
+
 @each $abrev,
   $value
     in (c: center, center: center, s: start, end: end, e: end, stretch: stretch)
