@@ -226,8 +226,6 @@ function App() {
     }
   });
 
-  React.useLayoutEffect(() => setTimeout(fluidCSS().actualizarStyle), []);
-
   return (
     <Main>
       <HeaderMenu />
