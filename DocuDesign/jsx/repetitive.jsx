@@ -54,7 +54,7 @@ function $CardF(props) {
 
 function $index(props) {
   return (
-    <$
+    <div
       {...props}
       id={idR()}
       className={`${props.className ?? ""} indexed md`}

@@ -66,7 +66,7 @@ function $F({ children, className = "" }) {
           if (text.startsWith(hashs)) {
             text = text.replace(hashs, "");
             return (
-              <$index variant={`h${deep}`} label={text.trim()}>
+              <$index variant={`h${Math.min(deep,6)}`} label={text.trim()}>
                 {text.trim()}
               </$index>
             );
