@@ -62,20 +62,20 @@ function changeContent({
     }
     window.history.pushState({}, "", url);
   }
+}
 
-  function findID(id, map) {
-    if (!id) {
-      throw new Error("No hay ID");
+function findID(id, map) {
+  if (!id) {
+    throw new Error("No hay ID");
+  }
+  for (const element of map) {
+    if (element.id === id) {
+      return element;
     }
-    for (const element of map) {
-      if (element.id === id) {
-        return element;
-      }
-      if (element.childs) {
-        const result = findID(id, element.childs);
-        if (result) {
-          return result;
-        }
+    if (element.childs) {
+      const result = findID(id, element.childs);
+      if (result) {
+        return result;
       }
     }
   }
