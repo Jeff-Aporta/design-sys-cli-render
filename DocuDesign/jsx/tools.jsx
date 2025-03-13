@@ -38,8 +38,7 @@ function changeContent({
     ReactDOM.render(noContent, mainArea);
     return;
   }
-  content = content();
-  ReactDOM.render(content, mainArea);
+  ReactDOM.render(content(), mainArea);
   for (const sidebar of sidebars) {
     $muiRender(
       <ContentLeftMenu idSelected={id} def={default_id} mapSite={mapSite} />,
