@@ -35,15 +35,6 @@ function $h5(props) {
 function $h6(props) {
   return <Typography {...props} variant="h6" />;
 }
-function $h7(props) {
-  return <Typography {...props} variant="h7" />;
-}
-function $h8(props) {
-  return <Typography {...props} variant="h8" />;
-}
-function $h9(props) {
-  return <Typography {...props} variant="h9" />;
-}
 
 function _(props) {
   if (Object.keys(props).length == 1 && props.children) {
