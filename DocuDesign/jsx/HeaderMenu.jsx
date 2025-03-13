@@ -53,9 +53,9 @@ function HeaderMenu() {
               );
             }
           })()}
-          <$ variant="h8" className="fw-bolder">
+          <Typcust variant="h8" className="fw-bolder">
             {config_template?.banner?.left?.label ?? "Doc name not specified"}
-          </$>
+          </Typcust>
         </div>
       </div>
       <div

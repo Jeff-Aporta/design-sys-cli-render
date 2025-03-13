@@ -17,32 +17,32 @@ function $$br(props) {
 }
 
 function $h1(props) {
-  return <$ {...props} variant="h1" />;
+  return <Typography {...props} variant="h1" />;
 }
 
 function $h2(props) {
-  return <$ {...props} variant="h2" />;
+  return <Typography {...props} variant="h2" />;
 }
 function $h3(props) {
-  return <$ {...props} variant="h3" />;
+  return <Typography {...props} variant="h3" />;
 }
 function $h4(props) {
-  return <$ {...props} variant="h4" />;
+  return <Typography {...props} variant="h4" />;
 }
 function $h5(props) {
-  return <$ {...props} variant="h5" />;
+  return <Typography {...props} variant="h5" />;
 }
 function $h6(props) {
-  return <$ {...props} variant="h6" />;
+  return <Typography {...props} variant="h6" />;
 }
 function $h7(props) {
-  return <$ {...props} variant="h7" />;
+  return <Typography {...props} variant="h7" />;
 }
 function $h8(props) {
-  return <$ {...props} variant="h8" />;
+  return <Typography {...props} variant="h8" />;
 }
 function $h9(props) {
-  return <$ {...props} variant="h9" />;
+  return <Typography {...props} variant="h9" />;
 }
 
 function _(props) {
@@ -50,17 +50,6 @@ function _(props) {
     return <React.Fragment {...props} />;
   }
   return <div {...props} />;
-}
-
-function $(props) {
-  return (
-    <_
-      {...props}
-      className={
-        ($variatStr(props.variant) ?? "") + " " + (props.className ?? "")
-      }
-    />
-  );
 }
 
 function $variatStr(variant, props) {

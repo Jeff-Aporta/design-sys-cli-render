@@ -205,9 +205,9 @@ function _$Instalación({ url_cdn, npm_pack }) {
   return (
     <$index label="Instalación">
       <$CardF className="pad-10px">
-        <$ variant="h1">Instalación</$>
+        <Typography variant="h1">Instalación</Typography>
         <$hr />
-        <$ variant="h4">CDN</$>
+        <Typography variant="h4">CDN</Typography>
         <$h />
         Para usarlo en tu proyecto, puedes integrarlo de forma sencilla mediante
         la URL en tu código HTML.
@@ -249,7 +249,7 @@ function _$Instalación({ url_cdn, npm_pack }) {
     return (
       <_>
         <$h />
-        <$ variant="h4">npm</$>
+        <Typography variant="h4">npm</Typography>
         <p>
           También puedes instalarlo como un módulo de npm ejecutando el
           siguiente comando en tu proyecto:
