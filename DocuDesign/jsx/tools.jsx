@@ -38,6 +38,7 @@ function changeContent({
     ReactDOM.render(noContent, mainArea);
     return;
   }
+  console.log({ content: content(), mainArea });
   ReactDOM.render(content(), mainArea);
   for (const sidebar of sidebars) {
     $muiRender(
