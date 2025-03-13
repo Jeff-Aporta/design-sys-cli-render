@@ -50,7 +50,7 @@ function selectThemeName(name) {
 
   function customizePropsMUI() {
     const typography = {
-      fontSize: 14,
+      fontSize: 11,
       button: {
         textTransform: "none",
       },
