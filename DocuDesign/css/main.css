@@ -26,6 +26,16 @@ html {
 }
 
 .container-right-responsive {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+  height: 90vh;
+
+  display: flex;
+  justify-content: end;
+  align-items: end;
+
   input {
     display: none;
   }
