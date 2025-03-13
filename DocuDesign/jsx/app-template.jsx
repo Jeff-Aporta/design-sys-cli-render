@@ -10,11 +10,6 @@ const zIndexHeader = "8";
 const zIndexCursorLight = "9";
 
 const config_template = {
-  clases: {
-    text: fluidCSS()
-      .lerpX([850, 1200], { fontSize: [13, 16] })
-      .end(),
-  },
   banner: {
     left: {
       label: "Documentación",

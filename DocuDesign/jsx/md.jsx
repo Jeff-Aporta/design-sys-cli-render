@@ -31,7 +31,7 @@ function $F({ children, className = "" }) {
 
   if (Array.isArray(children)) {
     return (
-      <_ className={className + " " + config_template.clases.text}>
+      <_ className={className}>
         {children.map((child) => {
           if (typeof child === "string") {
             return <$F>{child}</$F>;
